@@ -17,12 +17,10 @@
 		A420AC9918FC2B960050A004 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A420AC9818FC2B960050A004 /* OpenGL.framework */; };
 		A420ACB318FD7C220050A004 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A420ACB118FD7C220050A004 /* Sprite.cpp */; };
 		A420ACB618FD7C580050A004 /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A420ACB418FD7C580050A004 /* Stage.cpp */; };
-		A420ACB918FD7C990050A004 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A420ACB718FD7C990050A004 /* Cube.cpp */; };
-		A420ACC418FDA7FD0050A004 /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A420ACC218FDA7FD0050A004 /* Rectangle.cpp */; };
-		A420ACCA18FF16160050A004 /* MainHallway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A420ACC818FF16160050A004 /* MainHallway.cpp */; };
 		A420ACD918FF21420050A004 /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A420ACD718FF21420050A004 /* Driver.cpp */; };
-		A4B326FC1901CC070013B26D /* MainHallwayRight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4B326FA1901CC070013B26D /* MainHallwayRight.cpp */; };
-		A4B326FF1902015C0013B26D /* MainHallwayLeft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4B326FD1902015C0013B26D /* MainHallwayLeft.cpp */; };
+		A4B327501905FBD40013B26D /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4B3274E1905FBD40013B26D /* Cube.cpp */; };
+		A4B327531905FE930013B26D /* Hallway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4B327511905FE930013B26D /* Hallway.cpp */; };
+		A4E889B11906C01700B84A2F /* BaseCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889AF1906C01700B84A2F /* BaseCube.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,17 +51,14 @@
 		A420ACB218FD7C220050A004 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		A420ACB418FD7C580050A004 /* Stage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
 		A420ACB518FD7C580050A004 /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
-		A420ACB718FD7C990050A004 /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
-		A420ACB818FD7C990050A004 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
-		A420ACC218FDA7FD0050A004 /* Rectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rectangle.cpp; sourceTree = "<group>"; };
 		A420ACC318FDA7FD0050A004 /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
-		A420ACC818FF16160050A004 /* MainHallway.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainHallway.cpp; sourceTree = "<group>"; };
-		A420ACC918FF16160050A004 /* MainHallway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHallway.h; sourceTree = "<group>"; };
 		A420ACD718FF21420050A004 /* Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
-		A4B326FA1901CC070013B26D /* MainHallwayRight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainHallwayRight.cpp; sourceTree = "<group>"; };
-		A4B326FB1901CC070013B26D /* MainHallwayRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHallwayRight.h; sourceTree = "<group>"; };
-		A4B326FD1902015C0013B26D /* MainHallwayLeft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainHallwayLeft.cpp; sourceTree = "<group>"; };
-		A4B326FE1902015C0013B26D /* MainHallwayLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHallwayLeft.h; sourceTree = "<group>"; };
+		A4B3274E1905FBD40013B26D /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
+		A4B3274F1905FBD40013B26D /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		A4B327511905FE930013B26D /* Hallway.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hallway.cpp; sourceTree = "<group>"; };
+		A4B327521905FE930013B26D /* Hallway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hallway.h; sourceTree = "<group>"; };
+		A4E889AF1906C01700B84A2F /* BaseCube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseCube.cpp; sourceTree = "<group>"; };
+		A4E889B01906C01700B84A2F /* BaseCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCube.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,17 +135,14 @@
 				A420ACB218FD7C220050A004 /* Sprite.h */,
 				A420ACB418FD7C580050A004 /* Stage.cpp */,
 				A420ACB518FD7C580050A004 /* Stage.h */,
-				A420ACB718FD7C990050A004 /* Cube.cpp */,
-				A420ACB818FD7C990050A004 /* Cube.h */,
-				A420ACC218FDA7FD0050A004 /* Rectangle.cpp */,
 				A420ACC318FDA7FD0050A004 /* Rectangle.h */,
-				A420ACC818FF16160050A004 /* MainHallway.cpp */,
-				A420ACC918FF16160050A004 /* MainHallway.h */,
 				A420ACD718FF21420050A004 /* Driver.cpp */,
-				A4B326FA1901CC070013B26D /* MainHallwayRight.cpp */,
-				A4B326FB1901CC070013B26D /* MainHallwayRight.h */,
-				A4B326FD1902015C0013B26D /* MainHallwayLeft.cpp */,
-				A4B326FE1902015C0013B26D /* MainHallwayLeft.h */,
+				A4E889AF1906C01700B84A2F /* BaseCube.cpp */,
+				A4E889B01906C01700B84A2F /* BaseCube.h */,
+				A4B3274E1905FBD40013B26D /* Cube.cpp */,
+				A4B3274F1905FBD40013B26D /* Cube.h */,
+				A4B327511905FE930013B26D /* Hallway.cpp */,
+				A4B327521905FE930013B26D /* Hallway.h */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -276,12 +268,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A420ACD918FF21420050A004 /* Driver.cpp in Sources */,
-				A4B326FC1901CC070013B26D /* MainHallwayRight.cpp in Sources */,
-				A4B326FF1902015C0013B26D /* MainHallwayLeft.cpp in Sources */,
-				A420ACB918FD7C990050A004 /* Cube.cpp in Sources */,
+				A4E889B11906C01700B84A2F /* BaseCube.cpp in Sources */,
+				A4B327501905FBD40013B26D /* Cube.cpp in Sources */,
+				A4B327531905FE930013B26D /* Hallway.cpp in Sources */,
 				A420ACB618FD7C580050A004 /* Stage.cpp in Sources */,
-				A420ACCA18FF16160050A004 /* MainHallway.cpp in Sources */,
-				A420ACC418FDA7FD0050A004 /* Rectangle.cpp in Sources */,
 				A420ACB318FD7C220050A004 /* Sprite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

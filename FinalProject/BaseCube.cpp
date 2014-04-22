@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Michael Kapnick. All rights reserved.
 //
 
+#include "BaseCube.h"
 #include<stdio.h>
-#include "Cube.h"
 
 
-Cube::Cube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition)
+BaseCube::BaseCube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition)
 {
     offsetX     = xPosition;
     offsetY     = yPosition;
@@ -20,81 +20,77 @@ Cube::Cube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition)
     angle[1] = 0;
     angle[2] = 0;
 }
-Cube::Cube()
+BaseCube::BaseCube()
 {
 }
-void Cube::handleTick()
+void BaseCube::handleTick()
 {
     GLfloat   color[] = {1.0, 1.0, 1.0};
     GLint radius = 4;
+    
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
+    // Work on the Model View Matrix
     glTranslated(offsetX, offsetY, offsetZ);
     
-    // Create a cube
+    glRotatef(angle[0], 1.0, 0.0, 0.0);
+    glRotatef(angle[1], 0.0, 1.0, 0.0);
+    glRotatef(angle[2], 0.0, 0.0, 1.0);
+    
+    // Create a BaseCube
     glMaterialfv(GL_BACK, GL_AMBIENT,  color);
     glMaterialfv(GL_BACK, GL_DIFFUSE,  color);
     glMaterialfv(GL_BACK, GL_SPECULAR, color);
     glMaterialf(GL_BACK, GL_SHININESS, 80);
     
     glutSolidCube(10.0);
-    glTranslated(0, -radius, 0);
+    //glTranslated(0, -radius, 0);
     
-    glutWireTeapot(2);
-    glutWireTeapot(1);
+    //glutWireTeapot(2);
+    //glutWireTeapot(1);
     
-    glTranslated(-offsetX, -offsetY + radius, -offsetZ); //translate back to the center
+    glTranslated(-offsetX, -offsetY, -offsetZ); //translate back to the center
 }
 
-void Cube::mouseClicked(int button, int state, int x, int y)
-{
-    //nothing
-}
-
-void Cube::setOffsetX(GLfloat x)
+void BaseCube::setOffsetX(GLfloat x)
 {
     offsetX = x;
 }
 
-void Cube::setOffsetY(GLfloat y)
+
+void BaseCube::setOffsetY(GLfloat y)
 {
     offsetY = y;
 }
 
-void Cube::setOffsetZ(GLfloat z, bool isPositive)
+void BaseCube::setOffsetZ(GLfloat z, bool isPositive)
 {
-    if(isPositive)
-        offsetZ += z;
-    else
-        offsetZ -= z;
-
+    offsetZ = z;
 }
 
-GLfloat Cube::getOffsetX()
+GLfloat BaseCube::getOffsetX()
 {
     return offsetX;
 }
-GLfloat Cube::getOffsetY()
+GLfloat BaseCube::getOffsetY()
 {
     return offsetY;
 }
-GLfloat Cube::getOffsetZ()
+GLfloat BaseCube::getOffsetZ()
 {
     return offsetZ;
 }
 
-GLfloat* Cube::getAngleArray()
+GLfloat* BaseCube::getAngleArray()
 {
     return angle;
 }
-
-void Cube::setAngleArray(GLfloat * ang)
+void BaseCube::setAngleArray(GLfloat * ang)
 {
     angle[0] = ang[0];
     angle[1] = ang[1];
     angle[2] = ang[2];
 }
 
-void Cube::keyPressed(unsigned char key, int x, int y)
-{
-    //nothing
-}
+
