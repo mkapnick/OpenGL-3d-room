@@ -10,7 +10,7 @@
 #include<stdio.h>
 
 
-BaseCube::BaseCube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition)
+BaseCube::BaseCube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition, GLfloat size)
 {
     offsetX     = xPosition;
     offsetY     = yPosition;
@@ -19,6 +19,7 @@ BaseCube::BaseCube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition)
     angle[0] = 0;
     angle[1] = 0;
     angle[2] = 0;
+    this->size = size;
 }
 BaseCube::BaseCube()
 {
@@ -32,6 +33,7 @@ void BaseCube::handleTick()
     glLoadIdentity();
 
     // Work on the Model View Matrix
+    //printf("offset x for basecube is: %f\n ", offsetX);
     glTranslated(offsetX, offsetY, offsetZ);
     
     glRotatef(angle[0], 1.0, 0.0, 0.0);
@@ -46,18 +48,16 @@ void BaseCube::handleTick()
     
     glutSolidCube(10.0);
     //glTranslated(0, -radius, 0);
-    
     //glutWireTeapot(2);
     //glutWireTeapot(1);
     
-    glTranslated(-offsetX, -offsetY, -offsetZ); //translate back to the center
+    glTranslated(0, -offsetY, -offsetZ);
 }
 
 void BaseCube::setOffsetX(GLfloat x)
 {
     offsetX = x;
 }
-
 
 void BaseCube::setOffsetY(GLfloat y)
 {
@@ -69,17 +69,17 @@ void BaseCube::setOffsetZ(GLfloat z, bool isPositive)
     offsetZ = z;
 }
 
-GLfloat BaseCube::getOffsetX()
+GLfloat* BaseCube::getOffsetX()
 {
-    return offsetX;
+    return &offsetX;
 }
-GLfloat BaseCube::getOffsetY()
+GLfloat* BaseCube::getOffsetY()
 {
-    return offsetY;
+    return &offsetY;
 }
-GLfloat BaseCube::getOffsetZ()
+GLfloat* BaseCube::getOffsetZ()
 {
-    return offsetZ;
+    return &offsetZ;
 }
 
 GLfloat* BaseCube::getAngleArray()

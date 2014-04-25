@@ -83,7 +83,7 @@ void Stage::init()
     // Setup the projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glFrustum(-1, 1, -1, 1, 2, 80);
+    glFrustum(-1, 1, -1, 1, 2, 150);
 }
 
 /**

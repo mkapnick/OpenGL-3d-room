@@ -14,7 +14,7 @@ class BaseCube: public Cube
 {
 public:
     
-    BaseCube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition);
+    BaseCube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition, GLfloat size);
     BaseCube();
     void handleTick();
     void setOffsetY(GLfloat y);
@@ -22,9 +22,9 @@ public:
     void setOffsetX(GLfloat x);
     void setAngleArray(GLfloat * ang);
 
-    GLfloat getOffsetX();
-    GLfloat getOffsetY();
-    GLfloat getOffsetZ();
+    GLfloat* getOffsetX();
+    GLfloat* getOffsetY();
+    GLfloat* getOffsetZ();
     GLfloat* getAngleArray();
 
 private:
@@ -32,5 +32,6 @@ private:
     GLint               axis;
     int                 direction;
     GLfloat             angle[3];
+    GLfloat size;
 };
 #endif

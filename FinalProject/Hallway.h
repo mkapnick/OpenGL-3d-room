@@ -5,6 +5,8 @@
 #include "Cube.h"
 #include "BaseCube.h"
 #include <vector>
+#define FIRST_PERSON_PERSPECTIVE -12
+#define THRESHOLD 1
 using namespace std;
 
 
@@ -20,6 +22,7 @@ class Hallway: public Sprite
 public:
     
     Hallway(vector<Cube> cubes, BaseCube base, GLfloat* angles);
+    Hallway();
     void handleTick();
     void keyPressed(unsigned char key, int x, int y);
     void mouseClicked(int button, int state, int x, int y);
@@ -31,7 +34,9 @@ private:
     vector<Cube> cubes;
     BaseCube        base;
     GLfloat deg2rad(GLfloat degrees);
-    
+    GLfloat* originalZValues, *originalXValues, *originalYValues;
+    void updateLocation();
+    bool isClose(GLfloat x1, GLfloat y1, GLfloat z1, GLfloat x2, GLfloat y2, GLfloat z2);
     
 };
 #endif
