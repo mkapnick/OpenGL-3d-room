@@ -1,6 +1,7 @@
 #include "Stage.h"
 #include "Cube.h"
-#include "Hallway.h"
+#include "Model.h"
+#include "PropertyFactory.h"
 #include<stdio.h>
 
 /**
@@ -16,7 +17,16 @@
 static int            selectedSprite = 0;
 static GLint          delay;
 static Stage          stage;
+static GLuint         dlCenterLeftFront1;
 int                   window;
+static GLint facesFrontHallway;
+static GLint facesBackHallway;
+
+
+//static GLfloat verticesRightHallway[][3];
+
+
+
 
 /**
  * Create a window
@@ -125,137 +135,52 @@ void keySpecial (int key, int x, int y)
  */
 int main(int argc, char **argv)
  {
-     //Cubes
-     Cube           centerLeftFront1, centerLeftFront2, centerLeftFront3, centerRightFront1,                  centerRightFront2, centerRightFront3, centerCenterBack1, centerLeftBack1, centerLeftBack2, centerLeftBack3, centerRightBack1, centerRightBack2, centerRightBack3, leftSide1, leftSide2, leftSide3, leftSide4, leftSide5, rightSide1, rightSide2, rightSide3, rightSide4, rightSide5, middleCenter1, middleCenter2, middleCenter3, middleCenter4, middleCenter5, middleCenter6;
-     
-     Cube classRoom1, classRoom2;
-     
-     //Display Lists
-     static GLuint dlCenterLeftFront1;
-     
-     //Hallways
-     Hallway hallway1, hallway2, hallway3, hallway4, hallway5, middleHallway;
-     
-     //Base cube
-     BaseCube       middle;
-     
-     vector<Cube>   cubes1, cubes2, cubes3, cubes4, cubes5;
-     GLfloat        startingAngles[3];
-     
-     centerLeftFront1   = Cube(-10, 0, -15, 10.0);
-     centerLeftFront2   = Cube(-20, 0, -15, 10.0);
-     centerLeftFront3   = Cube(-30, 0, -15, 10.0);
-     middle             = BaseCube(0,0, -15, 10.0);
-     centerRightFront1  = Cube(10,0,-15, 10.0);
-     centerRightFront2  = Cube(20, 0, -15, 10.0);
-     centerRightFront3  = Cube(30, 0, -15, 10.0);
-     
-     centerLeftBack1    = Cube(-10,0,-65, 10.0);
-     centerLeftBack2    = Cube(-20,0, -65, 10.0);
-     centerLeftBack3    = Cube(-30,0, -65, 10.0);
-     centerCenterBack1  = Cube(0, 0, -65, 10.0);
-     centerRightBack1   = Cube(10,0,-65, 10.0);
-     centerRightBack2   = Cube(20, 0, -65, 10.0);
-     centerRightBack3   = Cube(30, 0, -65, 10.0);
-     
-     leftSide1          = Cube(-30,0, -25, 10.0);
-     leftSide2          = Cube(-30, 0, -35, 10.0);
-     leftSide3          = Cube(-30, 0, -45, 10.0);
-     leftSide4          = Cube(-30, 0, -55, 10.0);
-     
-     rightSide1         = Cube(30, 0,-25, 10.0);
-     rightSide2         = Cube(30, 0, -35, 10.0);
-     rightSide3         = Cube(30, 0, -45, 10.0);
-     rightSide4         = Cube(30, 0, -55, 10.0);
-     
-     middleCenter1      = Cube(0,0,5, 10.0);
-     middleCenter2      = Cube(0,0,-5, 10.0);
-     middleCenter3      = Cube(0,0,-25, 10.0);
-     middleCenter4      = Cube(0,0,-35, 10.0);
-     middleCenter5      = Cube(0,0, -45, 10.0);
-     middleCenter6      = Cube(0,0, -55, 10.0);
-
-     classRoom1         = Cube(10, 0, -40, 10.0);
-     classRoom2         = Cube(-10,0, -40, 10.0);
-     
-     //front row
-     cubes1.push_back(centerLeftFront1);
-     cubes1.push_back(centerLeftFront2);
-     cubes1.push_back(centerLeftFront3);
-     cubes1.push_back(centerRightFront1);
-     cubes1.push_back(centerRightFront2);
-     cubes1.push_back(centerRightFront3);
-
-     //back row
-     cubes2.push_back(centerLeftBack1);
-     cubes2.push_back(centerLeftBack2);
-     cubes2.push_back(centerLeftBack3);
-     cubes2.push_back(centerCenterBack1);
-     cubes2.push_back(centerRightBack1);
-     cubes2.push_back(centerRightBack2);
-     cubes2.push_back(centerRightBack3);
-
-     //left row
-     cubes3.push_back(leftSide1);
-     cubes3.push_back(leftSide2);
-     cubes3.push_back(leftSide3);
-     cubes3.push_back(leftSide4);
-     
-     //right row
-     cubes4.push_back(rightSide1);
-     cubes4.push_back(rightSide2);
-     cubes4.push_back(rightSide3);
-     cubes4.push_back(rightSide4);
-     
-     //middle row
-     cubes5.push_back(middleCenter1);
-     cubes5.push_back(middleCenter2);
-     cubes5.push_back(middleCenter3);
-     cubes5.push_back(middleCenter4);
-     cubes5.push_back(middleCenter5);
-     cubes5.push_back(middleCenter6);
-
-     //starting angles
-     startingAngles[0] = 0;
-     startingAngles[1] = 0;
-     startingAngles[2] = 0;
-     
-     //hallways
-     hallway1       = Hallway(cubes1, middle, startingAngles);
-     hallway2       = Hallway(cubes2, middle, startingAngles);
-     hallway3       = Hallway(cubes3, middle, startingAngles);
-     hallway4       = Hallway(cubes4, middle, startingAngles);
-     middleHallway  = Hallway(cubes5, middle, startingAngles);
-     //hallway5 = Hallway(cubes5, middle, startingAngles);
-     
-     /**************************************************************/
-     //Display list
-     //glNewList(dlCenterLeftFront1, GL_COMPILE);
-     
-     
-     //glEndList();
-     
-     
-     /*************************************************************/
-     
      delay = 20;
-     
-     stage.addSprite(&hallway1);
-     stage.addSprite(&hallway2);
-     stage.addSprite(&hallway3);
-     stage.addSprite(&hallway4);
-     stage.addSprite(&middleHallway);
-
      glutInit(&argc, argv);
      window = createWindow("Stage", 640, 480, 0, 0);
-
      glutDisplayFunc(display);
      glutMouseFunc(mouse);
      glutKeyboardFunc(keyboard);
      glutSpecialFunc(keySpecial);
      glutTimerFunc(delay, timer, 0);
- 
+     
+     Cube               leftHallway, rightHallway, backHallway, frontHallway, middleHallway;
+     CubeProperties     leftHallwayProperties, righHallwayProperties, frontHallwayProperties,backHallwayProperties, middleHallwayProperties;
+     PropertyFactory    factory;
+     Model              model;
+     BaseCube           middle;
+     vector<Cube>       cubes1;
+     GLfloat            startingAngles[3];
+     
+     startingAngles[0] = 0;
+     startingAngles[1] = 0;
+     startingAngles[2] = 0;
+     
+     factory                = PropertyFactory();
+     leftHallwayProperties  = factory.getLeftCubeProperties();
+     righHallwayProperties  = factory.getRightCubeProperties();
+     frontHallwayProperties = factory.getFrontCubeProperties();
+     backHallwayProperties  = factory.getBackCubeProperties();
+     middleHallwayProperties= factory.getMiddleCubeProperties();
+     
+     middle             = BaseCube(0, 0, -15, 10.0);
+     leftHallway        = Cube(-60, 0, -15, startingAngles, leftHallwayProperties);
+     rightHallway       = Cube(60, 0, -15, startingAngles, righHallwayProperties);
+     middleHallway      = Cube(0,0,-15,startingAngles, middleHallwayProperties);
+
+     startingAngles[1]  = 90;
+     frontHallway       = Cube(0, 0, 45, startingAngles, frontHallwayProperties);
+     backHallway        = Cube(0, 0, -75, startingAngles, backHallwayProperties);
+     startingAngles[1]  = 0;
+    
+     cubes1.push_back(leftHallway);
+     cubes1.push_back(rightHallway);
+     cubes1.push_back(frontHallway);
+     cubes1.push_back(backHallway);
+     cubes1.push_back(middleHallway);
+
+     model       = Model(cubes1, middle, startingAngles);
+     stage.addSprite(&model);
      stage.start();
- 
      return 0;
  }

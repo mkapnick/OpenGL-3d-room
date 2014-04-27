@@ -29,7 +29,6 @@ public:
 
 private:
     GLfloat             offsetX, offsetY, offsetZ;
-    GLint               axis;
     int                 direction;
     GLfloat             angle[3];
     GLfloat size;

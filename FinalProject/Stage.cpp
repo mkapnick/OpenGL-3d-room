@@ -77,13 +77,14 @@ void Stage::init()
     
     
     // Enable
-    glEnable(GL_LIGHTING);     // Enable lighting
-    glEnable(GL_LIGHT0);       // Enable light number 0
-    glEnable(GL_DEPTH_TEST);   // Enable depth buffering
+    //glEnable(GL_LIGHTING);     // Enable lighting
+    //glEnable(GL_LIGHT0);       // Enable light number 0
+    //glEnable(GL_DEPTH_TEST);   // Enable depth buffering
+    glEnable(GLUT_RGB);
     // Setup the projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glFrustum(-1, 1, -1, 1, 2, 150);
+    glFrustum(-1, 1, -1, 1, 2, 550);
 }
 
 /**
