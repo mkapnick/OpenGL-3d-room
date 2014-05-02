@@ -61,8 +61,7 @@ void Stage::init()
     
     
     // Shading
-    glShadeModel(GL_SMOOTH);
-    
+    /*glShadeModel(GL_SMOOTH);
     
     // Lighting
     GLfloat lightingmodelAmbient[] = {0.2, 0.2, 0.2, 1.0};
@@ -74,13 +73,13 @@ void Stage::init()
     glLightfv(GL_LIGHT0, GL_POSITION, light0Position);
     glLightfv(GL_LIGHT0, GL_DIFFUSE,  colorWhite);
     glLightfv(GL_LIGHT0, GL_SPECULAR, colorWhite);
-    
+    */
     
     // Enable
     //glEnable(GL_LIGHTING);     // Enable lighting
     //glEnable(GL_LIGHT0);       // Enable light number 0
-    //glEnable(GL_DEPTH_TEST);   // Enable depth buffering
-    glEnable(GLUT_RGB);
+   //glEnable(GL_DEPTH_TEST);   // Enable depth buffering
+    //glEnable(GLUT_RGB);
     // Setup the projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

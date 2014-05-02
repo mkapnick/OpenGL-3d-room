@@ -20,6 +20,13 @@ public:
     CubeProperties getFrontCubeProperties();
     CubeProperties getBackCubeProperties();
     CubeProperties getMiddleCubeProperties();
+    
+    void getDisplayListLeftHallway(GLuint &start);
+    void getDisplayListRightHallway(GLuint &start);
+    void getDisplayListMiddleHallway(GLuint &start);
+    void getDisplayListFrontHallway(GLuint &start);
+    void getDisplayListBackHallway(GLuint &start);
+
 
 
 };

@@ -23,6 +23,7 @@
 		A4E889B4190C1A9100B84A2F /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889B2190C1A9100B84A2F /* Model.cpp */; };
 		A4E889B7190C2CB100B84A2F /* CubeProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889B5190C2CB100B84A2F /* CubeProperties.cpp */; };
 		A4E889BA190C38DA00B84A2F /* PropertyFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889B8190C38D900B84A2F /* PropertyFactory.cpp */; };
+		A4FDCF9C1912BE9700FEEF4E /* OrientationFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCF9A1912BE9700FEEF4E /* OrientationFactory.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		A4E889B6190C2CB100B84A2F /* CubeProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeProperties.h; sourceTree = "<group>"; };
 		A4E889B8190C38D900B84A2F /* PropertyFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropertyFactory.cpp; sourceTree = "<group>"; };
 		A4E889B9190C38DA00B84A2F /* PropertyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyFactory.h; sourceTree = "<group>"; };
+		A4FDCF9A1912BE9700FEEF4E /* OrientationFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrientationFactory.cpp; sourceTree = "<group>"; };
+		A4FDCF9D1912C1F200FEEF4E /* OrientationFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrientationFactory.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,8 @@
 				A4E889B6190C2CB100B84A2F /* CubeProperties.h */,
 				A4E889B8190C38D900B84A2F /* PropertyFactory.cpp */,
 				A4E889B9190C38DA00B84A2F /* PropertyFactory.h */,
+				A4FDCF9A1912BE9700FEEF4E /* OrientationFactory.cpp */,
+				A4FDCF9D1912C1F200FEEF4E /* OrientationFactory.h */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				A420ACB618FD7C580050A004 /* Stage.cpp in Sources */,
 				A4E889B7190C2CB100B84A2F /* CubeProperties.cpp in Sources */,
 				A420ACB318FD7C220050A004 /* Sprite.cpp in Sources */,
+				A4FDCF9C1912BE9700FEEF4E /* OrientationFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

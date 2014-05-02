@@ -84,12 +84,12 @@ void Cube::handleTick()
     glRotated(angle[1], 0, 1, 0);
     glRotated(angle[2], 0, 0, 1);
    
-    glBindTexture(GL_TEXTURE_2D, properties.textureName);
     
     //draw cube here with texture mapping
     //Draw cube faces dynamically
     for (int f=0; f<6; f++)
     {
+        glBindTexture(GL_TEXTURE_2D, properties.textureNames[f]);
         drawCube(f);
     }
     
@@ -102,7 +102,6 @@ void Cube::handleTick()
     
     glPopMatrix();
 }
-
 
 /**
  *

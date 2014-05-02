@@ -152,6 +152,7 @@ int main(int argc, char **argv)
      vector<Cube>       cubes1;
      GLfloat            startingAngles[3];
      
+     
      startingAngles[0] = 0;
      startingAngles[1] = 0;
      startingAngles[2] = 0;
@@ -170,13 +171,16 @@ int main(int argc, char **argv)
 
      startingAngles[1]  = 90;
      frontHallway       = Cube(0, 0, 45, startingAngles, frontHallwayProperties);
+     
+     startingAngles[1]  = -90;
+
      backHallway        = Cube(0, 0, -75, startingAngles, backHallwayProperties);
      startingAngles[1]  = 0;
     
      cubes1.push_back(leftHallway);
      cubes1.push_back(rightHallway);
-     cubes1.push_back(frontHallway);
      cubes1.push_back(backHallway);
+     cubes1.push_back(frontHallway);
      cubes1.push_back(middleHallway);
 
      model       = Model(cubes1, middle, startingAngles);

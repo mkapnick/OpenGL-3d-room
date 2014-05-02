@@ -34,7 +34,6 @@ static GLint facesRightHallway [][4] =
     {2,3,7,6}  // top
 };
 
-
 static GLint facesMiddleHallway[][4] =
 {{4,5,6,7}, //front
     {-1,-1,-1,-1}, // right
@@ -69,7 +68,6 @@ static GLint facesMiddleHallwayExcept[][4] =
     {0,4,7,3},  // left
     {-1,-1,-1,-1}   // top
 };
-
 
 /***************** Vertices ***********************/
 static GLfloat wideVertices[][3] = {{-20.0,-10.0,-70.0},
@@ -123,6 +121,39 @@ static GLfloat middleVerticesOnExcept[][3] =
     {-20.0, 10.0, 50.0}
 };
 
+static char* images [][6] =
+{
+    /*middleHallway
+    {"/raws/main_ceiling.raw", "/raws/main_floor.raw", "/raws/main_wall_brick.raw", "/raws/main_wall_brick.raw", "/raws/main_front_5282.raw", "/raws/exit_2704.raw"},
+    
+    //frontHallway
+    {"/raws/ceiling.raw", "/raws/left_hallways_floor.raw", "/raws/plain_wall.raw", "/raws/IMG_5992.raw", "/raws/plain_wall.raw", "/raws/exit_2704.raw"},
+    
+    //backHallway
+    {"/raws/ceiling.raw", "/raws/lab_floor_8034.raw", "/raws/IMG_6427.raw", "/raws/IMG_6643.raw", "/raws/grove_door_end.raw", "/raws/exit_2704.raw"},
+    
+    //leftHallway
+    {"/raws/ceiling.raw", "/raws/left_hallways_floor.raw", "/raws/plain_wall.raw", "/raws/plain_wall.raw", "/raws/exit_2704.raw", "/raws/exit_2704.raw"},
+    
+    //rightHallway
+    {"/raws/ceiling.raw", "/raws/rug.raw", "/raws/IMG_0512.raw", "/raws/IMG_5992.raw", "/raws/IMG_2363.raw", "/raws/exit_2704.raw"}*/
+    
+    
+    //middleHallway
+    {"/raws/main_front_5282.raw", "/raws/main_wall_brick.raw", "/raws/main_floor.raw", "/raws/james-madison-u.raw", "/raws/main_wall_brick.raw", "/raws/main_ceiling.raw"},
+    
+    //frontHallway
+    {"/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/left_hallways_floor.raw", "/raws/plain_wall.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"},
+    
+    //backHallway
+    {"/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/left_hallways_floor.raw", "/raws/grove_door_end.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"},
+    
+    //leftHallway
+    {"/raws/exit_2704.raw","/raws/plain_wall.raw", "/raws/left_hallways_floor.raw","/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"},
+    
+    //rightHallway
+    {"/raws/exit_2704.raw", "/raws/plain_wall.raw",  "/raws/rug.raw","/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"}
+};
 
 
 PropertyFactory::PropertyFactory()
@@ -133,30 +164,59 @@ PropertyFactory::PropertyFactory()
 CubeProperties PropertyFactory::getLeftCubeProperties()
 {
     CubeProperties properties;
-    properties = CubeProperties(facesLeftHallway, facesLeftHallwayExcept, vertices, leftVerticesOnExcept, "Users/michaelk18/image");
+    properties = CubeProperties(facesLeftHallway, facesLeftHallwayExcept, vertices, leftVerticesOnExcept, images[3]);
     
     return properties;
 }
 CubeProperties PropertyFactory::getRightCubeProperties()
 {
     CubeProperties properties;
-    properties = CubeProperties(facesRightHallway, facesRightHallwayExcept, vertices, rightVerticesOnExcept, "Users/michaelk18/image");
+    properties = CubeProperties(facesRightHallway, facesRightHallwayExcept, vertices, rightVerticesOnExcept, images[4]);
     
     return properties;
 }
 CubeProperties PropertyFactory::getFrontCubeProperties()
 {
-    return getLeftCubeProperties();
+    CubeProperties properties;
+    properties = CubeProperties(facesLeftHallway, facesLeftHallwayExcept, vertices, leftVerticesOnExcept, images[1]);
+    
+    return properties;
 }
 CubeProperties PropertyFactory::getBackCubeProperties()
 {
-    return getLeftCubeProperties();
+    CubeProperties properties;
+    properties = CubeProperties(facesLeftHallway, facesLeftHallwayExcept, vertices, leftVerticesOnExcept, images[2]);
+    
+    return properties;
 }
 CubeProperties PropertyFactory::getMiddleCubeProperties()
 {
     CubeProperties properties;
-    properties = CubeProperties(facesMiddleHallway, facesMiddleHallwayExcept, wideVertices, middleVerticesOnExcept, "Users/michaelk18/image");
+    properties = CubeProperties(facesMiddleHallway, facesMiddleHallwayExcept, wideVertices, middleVerticesOnExcept, images[0]);
     return properties;
+}
+
+void PropertyFactory::getDisplayListLeftHallway(GLuint &holder)
+{
+    glNewList(holder, GL_COMPILE);
+    glEndList();
+
+}
+void PropertyFactory::getDisplayListRightHallway(GLuint &holder)
+{
+    
+}
+void PropertyFactory::getDisplayListMiddleHallway(GLuint &holder)
+{
+    
+}
+void PropertyFactory::getDisplayListFrontHallway(GLuint &holder)
+{
+    
+}
+void PropertyFactory::getDisplayListBackHallway(GLuint &holder)
+{
+    
 }
 
 
