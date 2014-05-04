@@ -17,7 +17,6 @@ JmuBackHallway::JmuBackHallway(vector<Cube>cubes)
 
 void JmuBackHallway::setUpVisibleFaces()
 {
-    //beginning face must not have left face set
     Cube            cube;
     size_t          size;
     size_t          half;
@@ -36,9 +35,8 @@ void JmuBackHallway::setUpVisibleFaces()
         properties->setFacesExcept(face);
         face = Faces::BACK;
         properties->setFacesExcept(face);
-        //beggininng of right
-        if (i == half || i == (half + 1) || i == (half - 1) ||
-            i == 0 || i == size-1)
+
+        if (i == half || i == (half + 1) || i == (half - 1))
         {
             face = Faces::RIGHT;
             properties->setFacesExcept(face);
@@ -49,13 +47,21 @@ void JmuBackHallway::setUpVisibleFaces()
             face = Faces::BOTTOM;
             properties->setFacesExcept(face);
         }
+        else if (i == 0 || i == size - 1)
+        {
+            face = Faces::TOP;
+            properties->setFacesExcept(face);
+            face = Faces::BOTTOM;
+            properties->setFacesExcept(face);
+            face = Faces::RIGHT;
+            properties->setFacesExcept(face);
+            face = Faces::LEFT;
+            properties->setFacesExcept(face);
+            
+       
+            
+        }
     }
-    //end face must not have left face set
-    
-    //middle 4 faces must not have left faces to set
-    
-    //last 4 faces must not have right set
-    
 }
 
 void JmuBackHallway::handleTick()

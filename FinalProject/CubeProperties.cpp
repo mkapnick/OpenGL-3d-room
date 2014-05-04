@@ -301,6 +301,16 @@ void CubeProperties::setVertices(GLfloat x, GLfloat y, GLfloat z)
     }
 }
 
+void CubeProperties::changeImage(int index, char * image)
+{
+    if(index >= 0 && index < 6)
+    {
+        images[index] = image;
+    }
+    
+    updateTextureMap();
+}
+
 void CubeProperties::setImages(Position pos)
 {
     switch(pos)
@@ -322,7 +332,7 @@ void CubeProperties::setImages(Position pos)
             images[5] = allImages[4][5];
             break;
         case MIDDLEH:
-            images[0] = allImages[0][3];
+            images[0] = allImages[0][0];
             images[1] = allImages[0][1];
             images[2] = allImages[0][2];
             images[3] = allImages[0][3];

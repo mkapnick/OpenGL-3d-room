@@ -31,13 +31,32 @@ void JmuLeftHallway::setUpVisibleFaces()
         cube        = this->cubes[i];
         properties  = cube.getCubeProperties();
         
-        face = Faces::FRONT;
-        properties->setFacesExcept(face);
-        face = Faces::BACK;
-        properties->setFacesExcept(face);
-        if(i == 0 || i == size -1)
+        if(i == 0)
         {
             face = Faces::RIGHT;
+            properties->setFacesExcept(face);
+            face = Faces::FRONT;
+            properties->setFacesExcept(face);
+            face = Faces::BACK;
+            properties->setFacesExcept(face);
+
+        }
+        else if (i == size -1)
+        {
+            properties->changeImage(4, "/raws/exit_2704.raw");
+            
+            properties->changeImage(3, "/raws/elevator.raw");
+
+            face = Faces::RIGHT;
+            properties->setFacesExcept(face);
+            face = Faces::FRONT;
+            properties->setFacesExcept(face);
+        }
+        else
+        {
+            face = Faces::FRONT;
+            properties->setFacesExcept(face);
+            face = Faces::BACK;
             properties->setFacesExcept(face);
         }
     }

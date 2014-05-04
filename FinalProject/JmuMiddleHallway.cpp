@@ -31,16 +31,17 @@ void JmuMiddleHallway::setUpVisibleFaces()
         cube        = this->cubes[i];
         properties  = cube.getCubeProperties();
         
-       
         if(i == 0)
         {
             face = Faces::RIGHT;
             properties->setFacesExcept(face);
             face = Faces::LEFT;
             properties->setFacesExcept(face);
+            face = Faces::BACK;
+            properties->setFacesExcept(face);
         }
         
-        if(i == size -1)
+        else if(i == size -1)
         {
             face = Faces::RIGHT;
             properties->setFacesExcept(face);

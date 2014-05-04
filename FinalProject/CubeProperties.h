@@ -29,6 +29,7 @@ public:
     char *images[6];
     GLuint textureNames[6];
     void setImages(Position pos);
+    void changeImage(int index, char* image);
     
 private:
     void updateFaces(int row);

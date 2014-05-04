@@ -36,9 +36,12 @@ void JmuFrontHallway::setUpVisibleFaces()
         properties->setFacesExcept(face);
         face = Faces::BACK;
         properties->setFacesExcept(face);
-        //beggininng of right
-        if (i == half || i == (half + 1) || i == (half - 1) ||
-            i == 0 || i == size-1)
+        
+        if(i > (half + 1))
+        {
+            properties->changeImage(2, "/raws/rug.raw");
+        }
+        if (i == half || i == (half + 1) || i == (half - 1))
         {
             face = Faces::RIGHT;
             properties->setFacesExcept(face);
@@ -49,13 +52,18 @@ void JmuFrontHallway::setUpVisibleFaces()
             face = Faces::BOTTOM;
             properties->setFacesExcept(face);
         }
+        else if (i == 0 || i == size - 1)
+        {
+            face = Faces::TOP;
+            properties->setFacesExcept(face);
+            face = Faces::BOTTOM;
+            properties->setFacesExcept(face);
+            face = Faces::RIGHT;
+            properties->setFacesExcept(face);
+         
+        }
+        
     }
-    //end face must not have left face set
-    
-    //middle 4 faces must not have left faces to set
-    
-    //last 4 faces must not have right set
-
 }
 
 void JmuFrontHallway::handleTick()
