@@ -2,6 +2,12 @@
 #define FP_CubeProperties_h
 
 #include "Sprite.h"
+#include "Faces.h"
+#include "Position.h"
+#include <vector>
+using namespace std;
+
+
 
 /**
  * A Cube is a cube-shaped Sprite that rotates
@@ -12,29 +18,32 @@
 class CubeProperties
 {
 public:
-    
-    CubeProperties(GLint f[6][4], GLint replacedFaces[6][4], GLfloat v[8][3], GLfloat replacedVertices[8][3], char* filenames[]);
+    friend class Drawer;
     CubeProperties();
-    void drawCube(int face);
-    GLuint textureNames[6];
-private:
-    GLfloat             **vertices;
-    GLfloat             **replacedVertices;
-    GLint               **faces;
-    GLint               **replacedFaces;
+    CubeProperties(CubeProperties& properties);
     
-    void readRAWImage(char* filename, GLbyte data[256][256][3]);
-    void initializeVertices();
+    void setCubeImages(Position position);
+    void setCubeVertices(GLfloat x, GLfloat y, GLfloat z);
+    void setFacesExcept(Faces f [], int size);
+    void setFacesExcept(Faces f);
+    char *images[6];
+    GLuint textureNames[6];
+    void setImages(Position pos);
+    
+private:
+    void updateFaces(int row);
     void initializeFaces();
-    void setTextureMap(char* filenames[6]);
-    void setFaces(GLint f[6][4]);
-    void setReplacedFaces(GLint f[6][4]);
-    void setVertices(GLfloat v[8][3]);
-    void setReplacedVertices(GLfloat v[8][3]);
-    void drawReplacedFace(int face, GLfloat**& mapping);
-    void initializeMapping(GLfloat**& mapping);
-    void bindFace(int face, GLfloat**& mapping);
+    void setVertices(GLfloat x, GLfloat y, GLfloat z);
+    void updateTextureMap();
+    void readRAWImage(char* filename, GLbyte data[256][256][3]);
+    GLfloat vertices [8][3];
+    GLfloat alternateVertices[8][3];
+    GLint faces [6][4];
 
+    
+    void copyFaces(GLint faces[6][4]);
+    void copyVertices(GLfloat vertices[8][3]);
+    void copyImages(char * images[6]);
     
 };
 #endif

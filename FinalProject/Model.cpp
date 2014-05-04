@@ -10,13 +10,14 @@
 #include <math.h>
 
 
-Model::Model(vector<Cube> list, BaseCube base, GLfloat* angles)
+Model::Model(vector<Hallway*> list, BaseCube base, GLfloat* angles)
 {
-    cubes           = list;
+    hallways        = list;
     this->base      = base;
     
-    //Keep track of original values
-    originalZValues = new GLfloat[list.size()];
+    //Keep track of original values.. worry about this later
+    
+    /*originalZValues = new GLfloat[list.size()];
     originalYValues = new GLfloat[list.size()];
     originalXValues = new GLfloat[list.size()];
     
@@ -27,7 +28,7 @@ Model::Model(vector<Cube> list, BaseCube base, GLfloat* angles)
         originalZValues[i] = *tmp.getOffsetZ();
         originalYValues[i] = *tmp.getOffsetY();
         originalXValues[i] = *tmp.getOffsetX();
-    }
+    }*/
 }
 Model::Model()
 {
@@ -49,9 +50,9 @@ void Model::handleTick()
 {
     this->base.handleTick();
     
-    for(int i =0; i < cubes.size(); i++)
+    for(int i =0; i < hallways.size(); i++)
     {
-        cubes[i].handleTick();
+        hallways[i]->handleTick();
     }
 }
 
@@ -97,6 +98,7 @@ void Model::keyPressed(unsigned char key, int x, int y)
     deltaX      = 0;
     deltaZ      = 0;
     
+    /**************** Update coordinate system! *******************/
     if (key == 'f')
     {
         deltaX      = sin(deg2rad(angle[1]));
@@ -107,13 +109,8 @@ void Model::keyPressed(unsigned char key, int x, int y)
     }
     else if (key == 'b')
     {
-        printf("I rotated myself %f degrees\n ", angle[1]);
         deltaX      = sin(deg2rad(angle[1]));
         deltaZ      = cos(deg2rad(angle[1]));
-        
-        printf("I moved %f in the x direction\n ",deltaX);
-        printf("I moved %f in the z direction\n ",deltaZ);
-
         *offsetX -= deltaX;
         *offsetZ += deltaZ;
     }
@@ -148,23 +145,11 @@ void Model::keyPressed(unsigned char key, int x, int y)
         angle[0] -=2;
     }
 
-    /*** Update all cubes associated with this model ***/
+    /********* Update all hallways associated with this model *********/
     
-    for(int i =0; i < cubes.size(); i++)
+    for(int i =0; i < hallways.size(); i++)
     {
-        cubeZ = cubes[i].getOffsetZ();
-        
-        if(!restart)
-        {
-            if(positive)
-                *cubeZ += deltaZ;
-            else
-                *cubeZ -= deltaZ;
-        }
-        else
-        {
-            *cubeZ = originalZValues[i];
-        }
+        hallways[i]->update(deltaZ, positive);
     }
 }
 

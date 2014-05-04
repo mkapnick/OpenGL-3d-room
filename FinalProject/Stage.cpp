@@ -34,8 +34,6 @@ Stage::~Stage()
     // Someone else is responsible for deleting the Sprite
 }
 
-
-
 /**
  * Add a Sprite to this Stage
  *
@@ -59,7 +57,6 @@ void Stage::init()
 {
     glClearColor(1, 1, 1, 1);
     
-    
     // Shading
     /*glShadeModel(GL_SMOOTH);
     
@@ -78,7 +75,7 @@ void Stage::init()
     // Enable
     //glEnable(GL_LIGHTING);     // Enable lighting
     //glEnable(GL_LIGHT0);       // Enable light number 0
-   //glEnable(GL_DEPTH_TEST);   // Enable depth buffering
+    glEnable(GL_DEPTH_TEST);   // Enable depth buffering
     //glEnable(GLUT_RGB);
     // Setup the projection
     glMatrixMode(GL_PROJECTION);
@@ -99,9 +96,6 @@ void Stage::keyPressed(unsigned char key, int x, int y, int id)
     if ((id >= 0) && (id < size)) sprite[id]->keyPressed(key, x, y);
 }
 
-
-
-
 /**
  * Forwards "mouse clicked" events to a particular Sprite object
  *
@@ -119,16 +113,14 @@ void Stage::mouseClicked(int button, int state, int x, int y, int id)
     }
 }
 
-
-
-
 /**
  * Forwards timer events to Sprite objects
  */
 void Stage::onTimer()
 {
     // Clear the screen
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT );
+    
     
     // Tell the sprites
     for (int i=0; i<size; i++) sprite[i]->timerTicked();

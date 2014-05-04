@@ -1,154 +1,93 @@
-//
-//  CubeProperties.cpp
-//  FinalProject
-//
-//  Created by Michael Kapnick on 4/26/14.
-//  Copyright (c) 2014 Michael Kapnick. All rights reserved.
-//
-
 #include "CubeProperties.h"
-#include<stdio.h>
-#include "OrientationFactory.h"
 
+static char* allImages [][6] =
+{
+    //middleHallway
+    {"/raws/james-madison-u.raw", "/raws/main_wall_brick.raw", "/raws/main_floor.raw", "/raws/james-madison-u.raw", "/raws/main_wall_brick.raw", "/raws/main_ceiling.raw"},
+    
+    //frontHallway
+    {"/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/left_hallways_floor.raw", "/raws/plain_wall.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"},
+    
+    //backHallway
+    {"/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/left_hallways_floor.raw", "/raws/grove_door_end.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"},
+    
+    //leftHallway
+    {"/raws/exit_2704.raw","/raws/plain_wall.raw", "/raws/left_hallways_floor.raw","/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"},
+    
+    //rightHallway
+    {"/raws/exit_2704.raw", "/raws/plain_wall.raw",  "/raws/rug.raw","/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"}
+};
 
-CubeProperties::CubeProperties(GLint faces[6][4], GLint replacedFaces[6][4], GLfloat vertices[8][3], GLfloat replacedVertices[8][3], char* filenames[6])
-{    
-    initializeFaces();
-    initializeVertices();
-    setFaces(faces);
-    setReplacedFaces(replacedFaces);
-    setVertices(vertices);
-    setReplacedVertices(replacedVertices);
-    setTextureMap(filenames);
-}
 
 CubeProperties::CubeProperties()
 {
-    //nothing
+    initializeFaces();
 }
 
-void CubeProperties::bindFace(int face, GLfloat**& mapping)
+CubeProperties::CubeProperties(CubeProperties& properties)
 {
-    OrientationFactory  orientationFactory;
-    
-    orientationFactory = OrientationFactory();
-    initializeMapping(mapping);
-    
-    switch(face)
-    {
-        case 0:
-            orientationFactory.getFrontMapping(mapping);
-            break;
-        case 1:
-            orientationFactory.getRightWallMapping(mapping);
-            break;
-        case 2:
-            orientationFactory.getBackMapping(mapping);
-            break;
-        case 3:
-            orientationFactory.getBackMapping(mapping);
-            break;
-        case 4:
-            orientationFactory.getLeftWallMapping(mapping);
-            break;
-        case 5:
-            orientationFactory.getRightWallMapping(mapping);
-            break;
-        case 6:
-            orientationFactory.getRightWallMapping(mapping);
-            break;
-    }
-    
+    copyFaces(properties.faces);
+    copyVertices(properties.vertices);
+    copyImages(properties.images);
 }
 
-void CubeProperties::drawCube(int face)
+void CubeProperties::copyFaces(GLint faces[6][4])
 {
-    GLfloat**           mapping;
-    bindFace(face, mapping);
-    
-    if(faces[face][0] != -1)
-    {
-        glBegin(GL_POLYGON);
-        int v;
-        
-        v = faces[face][0];
-        //glColor3f(0, 0, 0);
-        glTexCoord2f(mapping[0][0],mapping[0][1]);  // Map to the bottom left texel
-        glVertex3fv(vertices[v]);
-        
-        v = faces[face][1];
-        //glColor3f(0, 0, 1);
-        glTexCoord2f(mapping[1][0],mapping[1][1]);  // Map to the bottom right texel
-        glVertex3fv(vertices[v]);
-        
-        v = faces[face][2];
-        //glColor3f(0, 0, 1);
-        glTexCoord2f(mapping[2][0],mapping[2][1]); // Map to the top left texel
-        glVertex3fv(vertices[v]);
-        
-        v = faces[face][3];
-        //glColor3f(0, 0, 0);
-        glTexCoord2f(mapping[3][0],mapping[3][1]); // Map to the top left texel
-        glVertex3fv(vertices[v]);
-        
-        glEnd();
-    }
-    else
-    {
-        drawReplacedFace(face, mapping);
-    }
-}
-
-void CubeProperties::drawReplacedFace(int face, GLfloat**&mapping)
-{
-    glBegin(GL_POLYGON);
-    int v;
-    
-    v = replacedFaces[face][0];
-    glTexCoord2f(mapping[0][0],mapping[0][1]);  // Map to the bottom left texel
-    //glColor3f(0, 0, 0);
-    glVertex3fv(replacedVertices[v]);
-    
-    v = replacedFaces[face][1];
-    glTexCoord2f(mapping[1][0],mapping[1][1]);  // Map to the bottom right texel
-    //glColor3f(0, 0, 1);
-    glVertex3fv(replacedVertices[v]);
-    
-    v = replacedFaces[face][2];
-    glTexCoord2f(mapping[2][0],mapping[2][1]); // Map to the top left texel
-    //glColor3f(0, 0, 1);
-    glVertex3fv(replacedVertices[v]);
-    
-    v = replacedFaces[face][3];
-    glTexCoord2f(mapping[3][0],mapping[3][1]); // Map to the top left texel
-    //glColor3f(0, 0, 0);
-    glVertex3fv(replacedVertices[v]);
-    
-    glEnd();
-}
-
-
-void CubeProperties::initializeFaces()
-{
-    this->faces = new GLint*[6];
-    this->replacedFaces = new GLint*[6];
-    
     for(int i =0; i < 6; i++)
     {
-        this->faces[i] = new GLint[4];
-        this->replacedFaces[i] = new GLint[4];
+        for(int j =0; j < 4; j++)
+        {
+            this->faces[i][j] = faces[i][j];
+        }
     }
 }
 
-void CubeProperties::initializeVertices()
+void CubeProperties::copyVertices(GLfloat vertices[8][3])
 {
-    this->vertices = new GLfloat*[8];
-    this->replacedVertices = new GLfloat*[8];
-    
     for(int i =0; i < 8; i++)
     {
-        this->vertices[i] = new GLfloat[3];
-        this->replacedVertices[i] = new GLfloat[3];
+        for(int j =0; j < 3; j++)
+        {
+            this->vertices[i][j] = vertices[i][j];
+        }
+    }
+}
+
+void CubeProperties::copyImages(char * images[6])
+{
+    for(int i=0; i < 6; i++)
+    {
+        this->images[i] = images[i];
+    }
+    
+    updateTextureMap();
+}
+
+void CubeProperties::setCubeImages(Position position)
+{
+    int index = 0;
+    
+    switch(position)
+    {
+        case BACKH:
+            index = 2;
+            break;
+        case FRONTH:
+            index = 1;
+            break;
+        case RIGHTH:
+            index = 4;
+            break;
+        case LEFTH:
+            index = 3;
+            break;
+        case MIDDLEH:
+            index = 0;
+            break;
+    }
+    for(int i =0; i < 6; i ++)
+    {
+        this->images[i] = allImages[index][i];
     }
 }
 
@@ -164,7 +103,7 @@ void CubeProperties::readRAWImage(char* filename, GLbyte data[256][256][3])
     }
 }
 
-void CubeProperties::setTextureMap(char* filenames[6])
+void CubeProperties::updateTextureMap()
 {
     //Read the "image"
     GLbyte image[6][256][256][3];
@@ -172,7 +111,7 @@ void CubeProperties::setTextureMap(char* filenames[6])
     //read in each raw image for the cube
     for(int i =0; i < 6; i++)
     {
-        readRAWImage(filenames[i], image[i]);
+        readRAWImage(images[i], image[i]);
     }
     
     //[name
@@ -198,72 +137,215 @@ void CubeProperties::setTextureMap(char* filenames[6])
     
     // Enable textures
     glEnable(GL_TEXTURE_2D);
+
+}
+void CubeProperties::setCubeVertices(GLfloat x, GLfloat y, GLfloat z)
+{
+    setVertices(x, y, z);
 }
 
-/**
- * Set the faces associated with this cube
- *
- */
-void CubeProperties::setFaces(GLint f[6][4])
+void CubeProperties::setFacesExcept(Faces f[], int size)
 {
-    for(int i =0; i < 6; i++)
+    for (int i =0; i <size; i ++)
     {
-        for(int j =0; j < 4; j++)
+        switch(f[i])
         {
-            this->faces[i][j] = f[i][j];
+            case TOP:
+                updateFaces(5);
+                break;
+            case BOTTOM:
+                updateFaces(2);
+                break;
+            case RIGHT:
+                updateFaces(1);
+                break;
+            case LEFT:
+                updateFaces(4);
+                break;
+            case FRONT:
+                updateFaces(0);
+                break;
+            case BACK:
+                updateFaces(3);
+                break;
         }
     }
 }
 
-void CubeProperties::setReplacedFaces(GLint f[6][4])
+void CubeProperties::setFacesExcept(Faces f)
 {
-    for(int i =0; i < 6; i++)
+    switch(f)
     {
-        for(int j =0; j < 4; j++)
-        {
-            this->replacedFaces[i][j] = f[i][j];
-        }
+        case TOP:
+            updateFaces(5);
+            break;
+        case BOTTOM:
+            updateFaces(2);
+            break;
+        case RIGHT:
+            updateFaces(1);
+            break;
+        case LEFT:
+            updateFaces(4);
+            break;
+        case FRONT:
+            updateFaces(0);
+            break;
+        case BACK:
+            updateFaces(3);
+            break;
     }
 }
 
-/**
- * Set up the vertices associated with this cube
- *
- */
-void CubeProperties::setVertices(GLfloat v[8][3])
+void CubeProperties::updateFaces(int row)
 {
-    for(int i =0; i < 8; i++)
-    {
-        for(int j =0; j < 3; j++)
-        {
-            this->vertices[i][j] = v[i][j];
-        }
-    }
-}
-
-/**
- * Set up the vertices associated with this cube
- *
- */
-void CubeProperties::setReplacedVertices(GLfloat v[8][3])
-{
-    for(int i =0; i < 8; i++)
-    {
-        for(int j =0; j < 3; j++)
-        {
-            this->replacedVertices[i][j] = v[i][j];
-        }
-    }
-}
-
-void CubeProperties::initializeMapping(GLfloat **& mapping)
-{
-    mapping = new GLfloat * [4];
-    
     for(int i =0; i < 4; i++)
     {
-        mapping[i] = new GLfloat[2];
+        this->faces[row][i] = -1;
     }
 }
 
+void CubeProperties::initializeFaces()
+{
+    for(int i =0; i < 6; i++)
+    {
+        switch(i)
+        {
+            case 0:
+                faces[0][0] = 4;
+                faces[0][1] = 5;
+                faces[0][2] = 6;
+                faces[0][3] = 7;
+                break;
+            case 1:
+                faces[1][0] = 1;
+                faces[1][1] = 2;
+                faces[1][2] = 6;
+                faces[1][3] = 5;
+                break;
+            case 2:
+                faces[2][0] = 0;
+                faces[2][1] = 1;
+                faces[2][2] = 5;
+                faces[2][3] = 4;
+                break;
+            case 3:
+                faces[3][0] = 0;
+                faces[3][1] = 3;
+                faces[3][2] = 2;
+                faces[3][3] = 1;
+                break;
+            case 4:
+                faces[4][0] = 0;
+                faces[4][1] = 4;
+                faces[4][2] = 7;
+                faces[4][3] = 3;
+                break;
+            case 5:
+                faces[5][0] = 2;
+                faces[5][1] = 3;
+                faces[5][2] = 7;
+                faces[5][3] = 6;
+                break;
+        }
+    }
+}
 
+void CubeProperties::setVertices(GLfloat x, GLfloat y, GLfloat z)
+{
+    for (int i =0; i < 8; i++)
+    {
+        switch(i)
+        {
+            case 0:
+                vertices[0][0] = -x;
+                vertices[0][1] = -y;
+                vertices[0][2] = -z;
+                break;
+            case 1:
+                vertices[1][0] = x;
+                vertices[1][1] = -y;
+                vertices[1][2] = -z;
+                break;
+            case 2:
+                vertices[2][0] = x;
+                vertices[2][1] = y;
+                vertices[2][2] = -z;
+                break;
+            case 3:
+                vertices[3][0] = -x;
+                vertices[3][1] = y;
+                vertices[3][2] = -z;
+                break;
+            case 4:
+                vertices[4][0] = -x;
+                vertices[4][1] = -y;
+                vertices[4][2] = z;
+                break;
+            case 5:
+                vertices[5][0] = x;
+                vertices[5][1] = -y;
+                vertices[5][2] = z;
+                break;
+            case 6:
+                vertices[6][0] = x;
+                vertices[6][1] = y;
+                vertices[6][2] = z;
+                break;
+            case 7:
+                vertices[7][0] = -x;
+                vertices[7][1] = y;
+                vertices[7][2] = z;
+                break;
+        }
+    }
+}
+
+void CubeProperties::setImages(Position pos)
+{
+    switch(pos)
+    {
+        case LEFTH:
+            images[0] = allImages[3][0];
+            images[1] = allImages[3][1];
+            images[2] = allImages[3][2];
+            images[3] = allImages[3][3];
+            images[4] = allImages[3][4];
+            images[5] = allImages[3][5];
+            break;
+        case RIGHTH:
+            images[0] = allImages[4][0];
+            images[1] = allImages[4][1];
+            images[2] = allImages[4][2];
+            images[3] = allImages[4][3];
+            images[4] = allImages[4][4];
+            images[5] = allImages[4][5];
+            break;
+        case MIDDLEH:
+            images[0] = allImages[0][3];
+            images[1] = allImages[0][1];
+            images[2] = allImages[0][2];
+            images[3] = allImages[0][3];
+            images[4] = allImages[0][4];
+            images[5] = allImages[0][5];
+            break;
+        case BACKH:
+            images[0] = allImages[2][0];
+            images[1] = allImages[2][1];
+            images[2] = allImages[2][2];
+            images[3] = allImages[2][3];
+            images[4] = allImages[2][4];
+            images[5] = allImages[2][5];
+            break;
+        case FRONTH:
+            images[0] = allImages[1][0];
+            images[1] = allImages[1][1];
+            images[2] = allImages[1][2];
+            images[3] = allImages[1][3];
+            images[4] = allImages[1][4];
+            images[5] = allImages[1][5];
+            break;
+    }
+    
+    updateTextureMap();
+}

@@ -22,8 +22,15 @@
 		A4E889B11906C01700B84A2F /* BaseCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889AF1906C01700B84A2F /* BaseCube.cpp */; };
 		A4E889B4190C1A9100B84A2F /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889B2190C1A9100B84A2F /* Model.cpp */; };
 		A4E889B7190C2CB100B84A2F /* CubeProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889B5190C2CB100B84A2F /* CubeProperties.cpp */; };
-		A4E889BA190C38DA00B84A2F /* PropertyFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889B8190C38D900B84A2F /* PropertyFactory.cpp */; };
 		A4FDCF9C1912BE9700FEEF4E /* OrientationFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCF9A1912BE9700FEEF4E /* OrientationFactory.cpp */; };
+		A4FDCFA31915435400FEEF4E /* Hallway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCFA11915435400FEEF4E /* Hallway.cpp */; };
+		A4FDCFAC1915680700FEEF4E /* JmuRightHallway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCFAA1915680700FEEF4E /* JmuRightHallway.cpp */; };
+		A4FDCFAF1915681300FEEF4E /* JmuFrontHallway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCFAD1915681300FEEF4E /* JmuFrontHallway.cpp */; };
+		A4FDCFB21915682200FEEF4E /* JmuLeftHallway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCFB01915682200FEEF4E /* JmuLeftHallway.cpp */; };
+		A4FDCFB51915682E00FEEF4E /* JmuBackHallway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCFB31915682E00FEEF4E /* JmuBackHallway.cpp */; };
+		A4FDCFBB1915690E00FEEF4E /* JmuMiddleHallway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCFB91915690E00FEEF4E /* JmuMiddleHallway.cpp */; };
+		A4FDCFBE1915A17C00FEEF4E /* CubeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCFBC1915A17C00FEEF4E /* CubeFactory.cpp */; };
+		A4FDCFC11915B4BC00FEEF4E /* Drawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4FDCFBF1915B4BC00FEEF4E /* Drawer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +61,6 @@
 		A420ACB218FD7C220050A004 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		A420ACB418FD7C580050A004 /* Stage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
 		A420ACB518FD7C580050A004 /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
-		A420ACC318FDA7FD0050A004 /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
 		A420ACD718FF21420050A004 /* Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
 		A4B3274E1905FBD40013B26D /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
 		A4B3274F1905FBD40013B26D /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
@@ -64,10 +70,27 @@
 		A4E889B3190C1A9100B84A2F /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		A4E889B5190C2CB100B84A2F /* CubeProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubeProperties.cpp; sourceTree = "<group>"; };
 		A4E889B6190C2CB100B84A2F /* CubeProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeProperties.h; sourceTree = "<group>"; };
-		A4E889B8190C38D900B84A2F /* PropertyFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropertyFactory.cpp; sourceTree = "<group>"; };
-		A4E889B9190C38DA00B84A2F /* PropertyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyFactory.h; sourceTree = "<group>"; };
 		A4FDCF9A1912BE9700FEEF4E /* OrientationFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrientationFactory.cpp; sourceTree = "<group>"; };
 		A4FDCF9D1912C1F200FEEF4E /* OrientationFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrientationFactory.h; sourceTree = "<group>"; };
+		A4FDCFA11915435400FEEF4E /* Hallway.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hallway.cpp; sourceTree = "<group>"; };
+		A4FDCFA21915435400FEEF4E /* Hallway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hallway.h; sourceTree = "<group>"; };
+		A4FDCFA51915483300FEEF4E /* Faces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Faces.h; sourceTree = "<group>"; };
+		A4FDCFA819155CDF00FEEF4E /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
+		A4FDCFAA1915680700FEEF4E /* JmuRightHallway.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JmuRightHallway.cpp; sourceTree = "<group>"; };
+		A4FDCFAB1915680700FEEF4E /* JmuRightHallway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JmuRightHallway.h; sourceTree = "<group>"; };
+		A4FDCFAD1915681300FEEF4E /* JmuFrontHallway.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JmuFrontHallway.cpp; sourceTree = "<group>"; };
+		A4FDCFAE1915681300FEEF4E /* JmuFrontHallway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JmuFrontHallway.h; sourceTree = "<group>"; };
+		A4FDCFB01915682200FEEF4E /* JmuLeftHallway.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JmuLeftHallway.cpp; sourceTree = "<group>"; };
+		A4FDCFB11915682200FEEF4E /* JmuLeftHallway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JmuLeftHallway.h; sourceTree = "<group>"; };
+		A4FDCFB31915682E00FEEF4E /* JmuBackHallway.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JmuBackHallway.cpp; sourceTree = "<group>"; };
+		A4FDCFB41915682E00FEEF4E /* JmuBackHallway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JmuBackHallway.h; sourceTree = "<group>"; };
+		A4FDCFB91915690E00FEEF4E /* JmuMiddleHallway.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JmuMiddleHallway.cpp; sourceTree = "<group>"; };
+		A4FDCFBA1915690E00FEEF4E /* JmuMiddleHallway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JmuMiddleHallway.h; sourceTree = "<group>"; };
+		A4FDCFBC1915A17C00FEEF4E /* CubeFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubeFactory.cpp; sourceTree = "<group>"; };
+		A4FDCFBD1915A17C00FEEF4E /* CubeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeFactory.h; sourceTree = "<group>"; };
+		A4FDCFBF1915B4BC00FEEF4E /* Drawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawer.cpp; sourceTree = "<group>"; };
+		A4FDCFC01915B4BC00FEEF4E /* Drawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawer.h; sourceTree = "<group>"; };
+		A4FDCFC21916973500FEEF4E /* Orientation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Orientation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +167,6 @@
 				A420ACB218FD7C220050A004 /* Sprite.h */,
 				A420ACB418FD7C580050A004 /* Stage.cpp */,
 				A420ACB518FD7C580050A004 /* Stage.h */,
-				A420ACC318FDA7FD0050A004 /* Rectangle.h */,
 				A420ACD718FF21420050A004 /* Driver.cpp */,
 				A4E889AF1906C01700B84A2F /* BaseCube.cpp */,
 				A4E889B01906C01700B84A2F /* BaseCube.h */,
@@ -154,10 +176,27 @@
 				A4E889B3190C1A9100B84A2F /* Model.h */,
 				A4E889B5190C2CB100B84A2F /* CubeProperties.cpp */,
 				A4E889B6190C2CB100B84A2F /* CubeProperties.h */,
-				A4E889B8190C38D900B84A2F /* PropertyFactory.cpp */,
-				A4E889B9190C38DA00B84A2F /* PropertyFactory.h */,
 				A4FDCF9A1912BE9700FEEF4E /* OrientationFactory.cpp */,
 				A4FDCF9D1912C1F200FEEF4E /* OrientationFactory.h */,
+				A4FDCFA11915435400FEEF4E /* Hallway.cpp */,
+				A4FDCFA21915435400FEEF4E /* Hallway.h */,
+				A4FDCFA51915483300FEEF4E /* Faces.h */,
+				A4FDCFA819155CDF00FEEF4E /* Position.h */,
+				A4FDCFAA1915680700FEEF4E /* JmuRightHallway.cpp */,
+				A4FDCFAB1915680700FEEF4E /* JmuRightHallway.h */,
+				A4FDCFAD1915681300FEEF4E /* JmuFrontHallway.cpp */,
+				A4FDCFAE1915681300FEEF4E /* JmuFrontHallway.h */,
+				A4FDCFB01915682200FEEF4E /* JmuLeftHallway.cpp */,
+				A4FDCFB11915682200FEEF4E /* JmuLeftHallway.h */,
+				A4FDCFB31915682E00FEEF4E /* JmuBackHallway.cpp */,
+				A4FDCFB41915682E00FEEF4E /* JmuBackHallway.h */,
+				A4FDCFB91915690E00FEEF4E /* JmuMiddleHallway.cpp */,
+				A4FDCFBA1915690E00FEEF4E /* JmuMiddleHallway.h */,
+				A4FDCFBC1915A17C00FEEF4E /* CubeFactory.cpp */,
+				A4FDCFBD1915A17C00FEEF4E /* CubeFactory.h */,
+				A4FDCFBF1915B4BC00FEEF4E /* Drawer.cpp */,
+				A4FDCFC01915B4BC00FEEF4E /* Drawer.h */,
+				A4FDCFC21916973500FEEF4E /* Orientation.h */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -282,10 +321,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4FDCFC11915B4BC00FEEF4E /* Drawer.cpp in Sources */,
+				A4FDCFAC1915680700FEEF4E /* JmuRightHallway.cpp in Sources */,
+				A4FDCFA31915435400FEEF4E /* Hallway.cpp in Sources */,
+				A4FDCFBB1915690E00FEEF4E /* JmuMiddleHallway.cpp in Sources */,
 				A420ACD918FF21420050A004 /* Driver.cpp in Sources */,
-				A4E889BA190C38DA00B84A2F /* PropertyFactory.cpp in Sources */,
+				A4FDCFAF1915681300FEEF4E /* JmuFrontHallway.cpp in Sources */,
 				A4E889B11906C01700B84A2F /* BaseCube.cpp in Sources */,
+				A4FDCFB21915682200FEEF4E /* JmuLeftHallway.cpp in Sources */,
+				A4FDCFBE1915A17C00FEEF4E /* CubeFactory.cpp in Sources */,
 				A4B327501905FBD40013B26D /* Cube.cpp in Sources */,
+				A4FDCFB51915682E00FEEF4E /* JmuBackHallway.cpp in Sources */,
 				A4E889B4190C1A9100B84A2F /* Model.cpp in Sources */,
 				A420ACB618FD7C580050A004 /* Stage.cpp in Sources */,
 				A4E889B7190C2CB100B84A2F /* CubeProperties.cpp in Sources */,

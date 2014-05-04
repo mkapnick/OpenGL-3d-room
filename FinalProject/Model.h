@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "Cube.h"
 #include "BaseCube.h"
+#include "Hallway.h"
 #include <vector>
 using namespace std;
 
@@ -18,7 +19,7 @@ using namespace std;
 class Model: public Sprite
 {
 public:
-    Model(vector<Cube> cubes, BaseCube base, GLfloat* angles);
+    Model(vector<Hallway*> cubes, BaseCube base, GLfloat* angles);
     Model();
     void handleTick();
     void keyPressed(unsigned char key, int x, int y);
@@ -28,7 +29,7 @@ private:
     int rotation;
     int direction;
     bool firstPersonMode;
-    vector<Cube> cubes;
+    vector<Hallway*> hallways;
     BaseCube        base;
     GLfloat deg2rad(GLfloat degrees);
     GLfloat* originalZValues, *originalXValues, *originalYValues;

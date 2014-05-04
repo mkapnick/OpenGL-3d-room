@@ -27,9 +27,6 @@ BaseCube::BaseCube()
 }
 void BaseCube::handleTick()
 {
-    GLfloat   color[] = {1.0, 1.0, 1.0};
-    GLint radius = 4;
-    
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
@@ -38,11 +35,6 @@ void BaseCube::handleTick()
     glRotatef(angle[2], 0.0, 0.0, 1.0);
     
     glTranslated(-offsetX, -offsetY, offsetZ*-2);
-    
-   /* glMaterialfv(GL_BACK, GL_AMBIENT,  color);
-    glMaterialfv(GL_BACK, GL_DIFFUSE,  color);
-    glMaterialfv(GL_BACK, GL_SPECULAR, color);
-    glMaterialf(GL_BACK, GL_SHININESS, 80);*/
 }
 
 void BaseCube::setOffsetX(GLfloat x)

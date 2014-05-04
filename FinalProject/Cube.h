@@ -2,7 +2,8 @@
 #define FP_Cube_h
 
 #include "Sprite.h"
-#include "CubeProperties.h";
+#include "CubeProperties.h"
+#include "Orientation.h"
 
 
 /**
@@ -15,7 +16,7 @@ class Cube: public Sprite
 {
 public:
     
-    Cube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition, GLfloat startingAngle[3], CubeProperties properties);
+    Cube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition, GLfloat startingAngle[3], CubeProperties* properties);
     Cube();
     void handleTick();
     void keyPressed(unsigned char key, int x, int y);
@@ -23,11 +24,13 @@ public:
     GLfloat* getOffsetY();
     GLfloat* getOffsetZ();
     GLfloat* getAngleArray();
+    CubeProperties* getCubeProperties();
     
 private:
     GLfloat             offsetX, offsetY, offsetZ;
     GLfloat             angle[3];
-    void drawCube(int face);
-    CubeProperties properties;
+    void draw(int face);
+    CubeProperties* properties;
+    
 };
 #endif

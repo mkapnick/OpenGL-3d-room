@@ -8,9 +8,10 @@
 
 #include<stdio.h>
 #include "Cube.h"
+#include "Drawer.h"
 
 
-Cube::Cube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition, GLfloat ang[3], CubeProperties properties)
+Cube::Cube(GLfloat xPosition, GLfloat yPosition, GLfloat zPosition, GLfloat ang[3], CubeProperties* properties)
 {
     offsetX     = xPosition;
     offsetY     = yPosition;
@@ -31,9 +32,10 @@ Cube::Cube()
  *
  * @param face   The face index
  */
-void Cube::drawCube(int face)
+void Cube::draw(int face)
 {
-    this->properties.drawCube(face);
+    Drawer drawer = Drawer(this->properties);
+    drawer.draw(face);
 }
 
 /**
@@ -79,27 +81,27 @@ void Cube::handleTick()
     glPushMatrix();
 
     glTranslated(offsetX, offsetY, offsetZ);
-    
+        
     glRotated(angle[0], 1, 0, 0);
     glRotated(angle[1], 0, 1, 0);
     glRotated(angle[2], 0, 0, 1);
-   
+
+
     
     //draw cube here with texture mapping
-    //Draw cube faces dynamically
     for (int f=0; f<6; f++)
     {
-        glBindTexture(GL_TEXTURE_2D, properties.textureNames[f]);
-        drawCube(f);
+        glBindTexture(GL_TEXTURE_2D, properties->textureNames[f]);
+        draw(f);
     }
-    
+        
     glDisable(GL_TEXTURE_2D);
     
     glMaterialfv(GL_BACK, GL_AMBIENT,  color);
     glMaterialfv(GL_BACK, GL_DIFFUSE,  color);
     glMaterialfv(GL_BACK, GL_SPECULAR, color);
     glMaterialf(GL_BACK, GL_SHININESS, 80);
-    
+
     glPopMatrix();
 }
 
@@ -110,6 +112,10 @@ void Cube::keyPressed(unsigned char key, int x, int y)
 {
 }
 
+CubeProperties* Cube::getCubeProperties()
+{
+    return this->properties;
+}
 
 
 
