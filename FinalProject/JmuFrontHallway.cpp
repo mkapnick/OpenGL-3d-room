@@ -7,7 +7,7 @@
 //
 
 #include "JmuFrontHallway.h"
-#include "NTelosRoom.h"
+#include "RoomWithBackAndSides.h"
 #include <math.h>
 
 JmuFrontHallway::JmuFrontHallway(vector<Cube>cubes)
@@ -165,7 +165,7 @@ void JmuFrontHallway::drawNTelosRoom()
     GLfloat             startingAngles[3];
     vector<Cube>        cubes;
     Faces               face;
-    NTelosRoom          nTelosRoom;
+    RoomWithBackAndSides          roomWithBackAndSides;
     
     startingAngles[0] = 0;
     startingAngles[1] = 0;
@@ -182,19 +182,22 @@ void JmuFrontHallway::drawNTelosRoom()
     properties.setFacesExcept(face);
     cubes = factory.createUniformCubes(nTelosX, 0, 90, 1, startingAngles, properties, 0, 0, 10);
     
-    //nTelosRoom = NTelosRoom(cubes);
     /** Customize **/
     
-    //cubes = nTelosRoom.getCubes();
     for(int i =0; i < cubes.size(); i++)
     {
         this->cubes.push_back(cubes[i]);
     }
     
+    properties = CubeProperties();
+
     properties.setImages(FRONTH);
     properties.setCubeVertices(40, 10, 35);
 
     cubes = factory.createUniformCubes(nTelosX + 20, 0, 160, 20, startingAngles, properties, 0, 0, 10);
+
+    roomWithBackAndSides = RoomWithBackAndSides(cubes);
+    cubes = roomWithBackAndSides.getCubes();
 
     for(int i =0; i < cubes.size(); i++)
     {

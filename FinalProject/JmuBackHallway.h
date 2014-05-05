@@ -28,5 +28,10 @@ private:
     void setUpVisibleFaces();
     void drawClassroom1();
     void drawClassroom2();
+    void drawClassroom3();
+    void drawClassroom4();
+    void drawClassroom5();
+    void drawClassroom6();
+    GLfloat classroom1X, classroom1Y, classroom1Z, classroom2X, classroom2Y, classroom2Z;
 };
 #endif

@@ -1,5 +1,5 @@
-#ifndef FP_NTelosRoom_h
-#define FP_NTelosRoom_h
+#ifndef FP_RoomWithBackAndSides_h
+#define FP_RoomWithBackAndSides_h
 
 #include "CubeProperties.h"
 #include "Cube.h"
@@ -13,12 +13,12 @@
  * @author  Prof. David Bernstein, James Madison University
  * @version 1.0
  */
-class NTelosRoom
+class RoomWithBackAndSides
 {
 public:
     
-    NTelosRoom(vector<Cube> cubes);
-    NTelosRoom();
+    RoomWithBackAndSides(vector<Cube> cubes);
+    RoomWithBackAndSides();
     vector<Cube> getCubes();
 private:
     void setUpVisibleFaces();

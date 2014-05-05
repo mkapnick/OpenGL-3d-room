@@ -19,7 +19,7 @@
 		A420ACB618FD7C580050A004 /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A420ACB418FD7C580050A004 /* Stage.cpp */; };
 		A420ACD918FF21420050A004 /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A420ACD718FF21420050A004 /* Driver.cpp */; };
 		A4B327501905FBD40013B26D /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4B3274E1905FBD40013B26D /* Cube.cpp */; };
-		A4E7FBA31916FE3C00D05066 /* NTelosRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E7FBA11916FE3C00D05066 /* NTelosRoom.cpp */; };
+		A4E7FBA61917352E00D05066 /* RoomWithBackAndSides.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E7FBA41917352E00D05066 /* RoomWithBackAndSides.cpp */; };
 		A4E889B11906C01700B84A2F /* BaseCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889AF1906C01700B84A2F /* BaseCube.cpp */; };
 		A4E889B4190C1A9100B84A2F /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889B2190C1A9100B84A2F /* Model.cpp */; };
 		A4E889B7190C2CB100B84A2F /* CubeProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4E889B5190C2CB100B84A2F /* CubeProperties.cpp */; };
@@ -66,8 +66,8 @@
 		A4B3274E1905FBD40013B26D /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
 		A4B3274F1905FBD40013B26D /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		A4E7FBA01916C85700D05066 /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		A4E7FBA11916FE3C00D05066 /* NTelosRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NTelosRoom.cpp; sourceTree = "<group>"; };
-		A4E7FBA21916FE3C00D05066 /* NTelosRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTelosRoom.h; sourceTree = "<group>"; };
+		A4E7FBA41917352E00D05066 /* RoomWithBackAndSides.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomWithBackAndSides.cpp; sourceTree = "<group>"; };
+		A4E7FBA51917352E00D05066 /* RoomWithBackAndSides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomWithBackAndSides.h; sourceTree = "<group>"; };
 		A4E889AF1906C01700B84A2F /* BaseCube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseCube.cpp; sourceTree = "<group>"; };
 		A4E889B01906C01700B84A2F /* BaseCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCube.h; sourceTree = "<group>"; };
 		A4E889B2190C1A9100B84A2F /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
@@ -202,8 +202,8 @@
 				A4FDCFC01915B4BC00FEEF4E /* Drawer.h */,
 				A4FDCFC21916973500FEEF4E /* Orientation.h */,
 				A4E7FBA01916C85700D05066 /* Location.h */,
-				A4E7FBA11916FE3C00D05066 /* NTelosRoom.cpp */,
-				A4E7FBA21916FE3C00D05066 /* NTelosRoom.h */,
+				A4E7FBA41917352E00D05066 /* RoomWithBackAndSides.cpp */,
+				A4E7FBA51917352E00D05066 /* RoomWithBackAndSides.h */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -336,11 +336,11 @@
 				A4FDCFAF1915681300FEEF4E /* JmuFrontHallway.cpp in Sources */,
 				A4E889B11906C01700B84A2F /* BaseCube.cpp in Sources */,
 				A4FDCFB21915682200FEEF4E /* JmuLeftHallway.cpp in Sources */,
+				A4E7FBA61917352E00D05066 /* RoomWithBackAndSides.cpp in Sources */,
 				A4FDCFBE1915A17C00FEEF4E /* CubeFactory.cpp in Sources */,
 				A4B327501905FBD40013B26D /* Cube.cpp in Sources */,
 				A4FDCFB51915682E00FEEF4E /* JmuBackHallway.cpp in Sources */,
 				A4E889B4190C1A9100B84A2F /* Model.cpp in Sources */,
-				A4E7FBA31916FE3C00D05066 /* NTelosRoom.cpp in Sources */,
 				A420ACB618FD7C580050A004 /* Stage.cpp in Sources */,
 				A4E889B7190C2CB100B84A2F /* CubeProperties.cpp in Sources */,
 				A420ACB318FD7C220050A004 /* Sprite.cpp in Sources */,
