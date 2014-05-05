@@ -5,6 +5,7 @@
 #include "Faces.h"
 #include "Position.h"
 #include <vector>
+#include "Location.h"
 using namespace std;
 
 
@@ -29,7 +30,7 @@ public:
     char *images[6];
     GLuint textureNames[6];
     void setImages(Position pos);
-    void changeImage(int index, char* image);
+    void changeImage(Location location, char* image);
     
 private:
     void updateFaces(int row);

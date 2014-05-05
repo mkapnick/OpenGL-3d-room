@@ -206,37 +206,6 @@ int main(int argc, char **argv)
      jmuMiddle  = new JmuMiddleHallway(cubes);
      hallways.push_back(jmuMiddle);
 
-     /*leftHallwayProperties      = factory.getLeftCubeProperties();
-     righHallwayProperties      = factory.getRightCubeProperties();
-     frontHallwayProperties     = factory.getFrontCubeProperties();
-     backHallwayProperties      = factory.getBackCubeProperties();
-     middleHallwayProperties    = factory.getMiddleCubeProperties();*/
-     
-     /*nTelasProperties           = factory.getCubeProperties(40, 10, 30, testImages);
-     
-     leftHallway        = Cube(-60, 0, -15, startingAngles, leftHallwayProperties);
-     rightHallway       = Cube(60, 0, -15, startingAngles, righHallwayProperties);
-     middleHallway      = Cube(0,0,-15,startingAngles, middleHallwayProperties);
-     nTelasRoom         = Cube(-50,0,-150, startingAngles, nTelasProperties);
-     
-     nTelasProperties = factory.getCubeProperties(10, 10, 20, testImages);
-     nTelasRoomHallway  = Cube(-50,0,-100, startingAngles, nTelasProperties);
-
-     startingAngles[1]  = 90;
-     frontHallway       = Cube(0, 0, 45, startingAngles, frontHallwayProperties);
-     
-     startingAngles[1]  = -90;
-     backHallway        = Cube(0, 0, -75, startingAngles, backHallwayProperties);
-     startingAngles[1]  = 0;*/
-    
-     /*cubes1.push_back(leftHallway);
-     cubes1.push_back(rightHallway);
-     cubes1.push_back(backHallway);
-     cubes1.push_back(frontHallway);
-     cubes1.push_back(middleHallway);
-     cubes1.push_back(nTelasRoom);
-     cubes1.push_back(nTelasRoomHallway);
-     */
      
      middle      = BaseCube(0, 0, -15, 10.0);
      model       = Model(hallways, middle, startingAngles);

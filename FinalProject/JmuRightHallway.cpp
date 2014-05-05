@@ -31,20 +31,30 @@ void JmuRightHallway::setUpVisibleFaces()
         cube        = this->cubes[i];
         properties  = cube.getCubeProperties();
         
-      
-        
+    
         if(i == 0)
         {
-            properties->changeImage(1,"/raws/exit_2704.raw");
+            properties->changeImage(LEFTWALL,"/raws/exit_2704.raw");
 
             face = Faces::LEFT;
             properties->setFacesExcept(face);
             face = Faces::BACK;
             properties->setFacesExcept(face);
+            face = Faces::FRONT;
+            properties->setFacesExcept(face);
+        }
+        else if (i == 1)
+        {
+            properties->changeImage(FRONTWALL,"/raws/IMG_2363.raw");
+            face = Faces::BACK;
+            properties->setFacesExcept(face);
+            face = Faces::FRONT;
+            properties->setFacesExcept(face);
+
         }
         else if(i == size -1)
         {
-            properties->changeImage(1,"/raws/grove_door_end.raw");
+            properties->changeImage(LEFTWALL,"/raws/grove_door_end.raw");
             face = Faces::LEFT;
             properties->setFacesExcept(face);
             face = Faces::FRONT;

@@ -4,6 +4,7 @@
 #include "Cube.h"
 #include <vector>
 #include "Hallway.h"
+#include "CubeFactory.h"
 using namespace std;
 
 
@@ -25,5 +26,7 @@ public:
     
 private:
     void setUpVisibleFaces();
+    void drawClassroom1();
+    void drawClassroom2();
 };
 #endif

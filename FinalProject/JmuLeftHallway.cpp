@@ -43,9 +43,9 @@ void JmuLeftHallway::setUpVisibleFaces()
         }
         else if (i == size -1)
         {
-            properties->changeImage(4, "/raws/exit_2704.raw");
+            properties->changeImage(BACKWALL, "/raws/exit_2704.raw");
             
-            properties->changeImage(3, "/raws/elevator.raw");
+            properties->changeImage(RIGHTWALL, "/raws/elevator.raw");
 
             face = Faces::RIGHT;
             properties->setFacesExcept(face);

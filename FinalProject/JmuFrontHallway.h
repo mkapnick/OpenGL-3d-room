@@ -4,6 +4,7 @@
 #include "Cube.h"
 #include <vector>
 #include "Hallway.h"
+#include "CubeFactory.h"
 using namespace std;
 
 
@@ -25,5 +26,9 @@ public:
     
 private:
     void setUpVisibleFaces();
+    void drawNTelosRoom();
+    void drawExtensionWithCouches();
+    GLfloat nTelosX, nTelosY, nTelosZ;
+    GLfloat extensionX, extensionY, extensionZ;
 };
 #endif

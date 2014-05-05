@@ -301,8 +301,33 @@ void CubeProperties::setVertices(GLfloat x, GLfloat y, GLfloat z)
     }
 }
 
-void CubeProperties::changeImage(int index, char * image)
+void CubeProperties::changeImage(Location location, char * image)
 {
+    int index;
+    switch(location)
+    {
+        case CEILING:
+            index =5;
+            break;
+        case FLOOR:
+            index = 2;
+            break;
+        case FRONTWALL:
+            index = 0;
+            break;
+        case BACKWALL:
+            index = 4;
+            break;
+        case LEFTWALL:
+            index = 1;
+            break;
+        case RIGHTWALL:
+            index = 3;
+            break;
+        default:
+            break;
+    }
+    
     if(index >= 0 && index < 6)
     {
         images[index] = image;

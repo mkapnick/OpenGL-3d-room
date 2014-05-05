@@ -7,12 +7,15 @@
 //
 
 #include "JmuFrontHallway.h"
+#include "NTelosRoom.h"
 #include <math.h>
 
 JmuFrontHallway::JmuFrontHallway(vector<Cube>cubes)
 {
     this->cubes = cubes;
     setUpVisibleFaces();
+    drawNTelosRoom();
+    drawExtensionWithCouches();
 }
 
 void JmuFrontHallway::setUpVisibleFaces()
@@ -39,7 +42,17 @@ void JmuFrontHallway::setUpVisibleFaces()
         
         if(i > (half + 1))
         {
-            properties->changeImage(2, "/raws/rug.raw");
+            properties->changeImage(FLOOR, "/raws/rug.raw");
+        }
+        if (i == (half + 3))
+        {
+            face = Faces::RIGHT;
+            properties->setFacesExcept(face);
+            face = Faces::LEFT;
+            properties->setFacesExcept(face);
+            nTelosX = *cube.getOffsetX();
+            nTelosY = *cube.getOffsetY();
+            nTelosZ = *cube.getOffsetZ();
         }
         if (i == half || i == (half + 1) || i == (half - 1))
         {
@@ -52,7 +65,7 @@ void JmuFrontHallway::setUpVisibleFaces()
             face = Faces::BOTTOM;
             properties->setFacesExcept(face);
         }
-        else if (i == 0 || i == size - 1)
+        else if (i == 0)
         {
             face = Faces::TOP;
             properties->setFacesExcept(face);
@@ -62,7 +75,26 @@ void JmuFrontHallway::setUpVisibleFaces()
             properties->setFacesExcept(face);
          
         }
-        
+        else if( i == size - 1)
+        {
+            face = Faces::TOP;
+            properties->setFacesExcept(face);
+            face = Faces::BOTTOM;
+            properties->setFacesExcept(face);
+            face = Faces::RIGHT;
+            properties->setFacesExcept(face);
+            face = Faces::LEFT;
+            properties->setFacesExcept(face);
+            
+            extensionX = *cube.getOffsetX();
+            extensionY = *cube.getOffsetY();
+            extensionZ = *cube.getOffsetZ();
+        }
+        else if (i == size - 2)
+        {
+            face = Faces::LEFT;
+            properties->setFacesExcept(face);
+        }
     }
 }
 
@@ -89,4 +121,85 @@ void JmuFrontHallway::update(GLfloat deltaZ, bool positive)
         else
             *cubeZ -= deltaZ;
     }
+}
+
+void JmuFrontHallway::drawExtensionWithCouches()
+{
+    Cube leadingHallway;
+    CubeProperties      properties;
+    CubeFactory         factory;
+    GLfloat             startingAngles[3];
+    vector<Cube>        cubes, cubes2;
+    Faces               face;
+
+    startingAngles[0] = 0;
+    startingAngles[1] = 0;
+    startingAngles[2] = 0;
+    
+    properties = CubeProperties();
+    factory    = CubeFactory();
+    
+    properties.setCubeVertices(20, 10, 35);
+    properties.setImages(RIGHTH);
+    face = Faces::FRONT;
+    properties.setFacesExcept(face);
+    face = Faces::BACK;
+    properties.setFacesExcept(face);
+    cubes = factory.createUniformCubes(extensionX- 10, extensionY, 90, 1, startingAngles, properties, 0, 0, 10);
+    /** Customize **/
+    
+    for(int i =0; i < cubes.size(); i++)
+    {
+        this->cubes.push_back(cubes[i]);
+    }
+    
+    //draw couches
+
+}
+
+void JmuFrontHallway::drawNTelosRoom()
+{
+    Cube leadingHallway;
+    CubeProperties      properties;
+    CubeFactory         factory;
+    GLfloat             startingAngles[3];
+    vector<Cube>        cubes;
+    Faces               face;
+    NTelosRoom          nTelosRoom;
+    
+    startingAngles[0] = 0;
+    startingAngles[1] = 0;
+    startingAngles[2] = 0;
+    
+    properties = CubeProperties();
+    factory    = CubeFactory();
+
+    properties.setCubeVertices(20, 10, 35);
+    properties.setImages(RIGHTH);
+    face = Faces::FRONT;
+    properties.setFacesExcept(face);
+    face = Faces::BACK;
+    properties.setFacesExcept(face);
+    cubes = factory.createUniformCubes(nTelosX, 0, 90, 1, startingAngles, properties, 0, 0, 10);
+    
+    //nTelosRoom = NTelosRoom(cubes);
+    /** Customize **/
+    
+    //cubes = nTelosRoom.getCubes();
+    for(int i =0; i < cubes.size(); i++)
+    {
+        this->cubes.push_back(cubes[i]);
+    }
+    
+    properties.setImages(FRONTH);
+    properties.setCubeVertices(40, 10, 35);
+
+    cubes = factory.createUniformCubes(nTelosX + 20, 0, 160, 20, startingAngles, properties, 0, 0, 10);
+
+    for(int i =0; i < cubes.size(); i++)
+    {
+        this->cubes.push_back(cubes[i]);
+    }
+    
+    
 }
