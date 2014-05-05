@@ -28,6 +28,7 @@ private:
     void setUpVisibleFaces();
     void drawNTelosRoom();
     void drawExtensionWithCouches();
+    void drawGradLounge();
     GLfloat nTelosX, nTelosY, nTelosZ;
     GLfloat extensionX, extensionY, extensionZ;
 };

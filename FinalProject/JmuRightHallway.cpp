@@ -48,8 +48,6 @@ void JmuRightHallway::setUpVisibleFaces()
             properties->changeImage(FRONTWALL,"/raws/IMG_2363.raw");
             face = Faces::BACK;
             properties->setFacesExcept(face);
-            face = Faces::FRONT;
-            properties->setFacesExcept(face);
 
         }
         else if(i == size -1)

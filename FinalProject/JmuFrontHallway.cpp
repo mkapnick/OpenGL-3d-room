@@ -8,6 +8,7 @@
 
 #include "JmuFrontHallway.h"
 #include "RoomWithBackAndSides.h"
+#include "RoomWithFrontAndSides.h"
 #include <math.h>
 
 JmuFrontHallway::JmuFrontHallway(vector<Cube>cubes)
@@ -16,6 +17,7 @@ JmuFrontHallway::JmuFrontHallway(vector<Cube>cubes)
     setUpVisibleFaces();
     drawNTelosRoom();
     drawExtensionWithCouches();
+    drawGradLounge();
 }
 
 void JmuFrontHallway::setUpVisibleFaces()
@@ -131,6 +133,8 @@ void JmuFrontHallway::drawExtensionWithCouches()
     GLfloat             startingAngles[3];
     vector<Cube>        cubes, cubes2;
     Faces               face;
+    RoomWithBackAndSides roomWithBackAndSides;
+
 
     startingAngles[0] = 0;
     startingAngles[1] = 0;
@@ -203,6 +207,37 @@ void JmuFrontHallway::drawNTelosRoom()
     {
         this->cubes.push_back(cubes[i]);
     }
+}
+
+void JmuFrontHallway::drawGradLounge()
+{
+    Cube leadingHallway;
+    CubeProperties      properties;
+    CubeFactory         factory;
+    GLfloat             startingAngles[3];
+    vector<Cube>        cubes, cubes2;
+    Faces               face;
+    RoomWithBackAndSides* r;
     
+    
+    startingAngles[0] = 0;
+    startingAngles[1] = 0;
+    startingAngles[2] = 0;
+    
+    properties = CubeProperties();
+    factory    = CubeFactory();
+    
+    properties.setCubeVertices(20, 10, 25);
+    properties.setImages(ROOM_WITH_SIDES_AND_BACK);
+    cubes = factory.createUniformCubes(nTelosX, 0, 10,2,startingAngles, properties,0, 0, -10);
+    /** Customize **/
+    
+    r = new RoomWithBackAndSides(cubes);
+    cubes = r->getCubes();
+    for(int i =0; i < cubes.size(); i++)
+    {
+        this->cubes.push_back(cubes[i]);
+    }
+
     
 }

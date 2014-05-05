@@ -1,6 +1,6 @@
 #include "CubeProperties.h"
 
-static char* allImages [][6] =
+static char* allImages [][8] =
 {
     //middleHallway
     {"/raws/james-madison-u.raw", "/raws/main_wall_brick.raw", "/raws/main_floor.raw", "/raws/james-madison-u.raw", "/raws/main_wall_brick.raw", "/raws/main_ceiling.raw"},
@@ -15,7 +15,14 @@ static char* allImages [][6] =
     {"/raws/exit_2704.raw","/raws/plain_wall.raw", "/raws/left_hallways_floor.raw","/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"},
     
     //rightHallway
-    {"/raws/exit_2704.raw", "/raws/plain_wall.raw",  "/raws/rug.raw","/raws/exit_2704.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"}
+    {"/raws/exit_2704.raw", "/raws/plain_wall.raw",  "/raws/rug.raw","/raws/plain_wall.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"},
+    
+    //RoomWithBackAndSides
+    {"/raws/plain_wall.raw", "/raws/plain_wall.raw",  "/raws/rug.raw","/raws/plain_wall.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"},
+    
+    //RoomWithBackAndSidesNORug
+    {"/raws/plain_wall.raw", "/raws/plain_wall.raw",  "/raws/left_hallways_floor.raw","/raws/plain_wall.raw", "/raws/plain_wall.raw", "/raws/ceiling.raw"}
+    
 };
 
 
@@ -379,6 +386,23 @@ void CubeProperties::setImages(Position pos)
             images[3] = allImages[1][3];
             images[4] = allImages[1][4];
             images[5] = allImages[1][5];
+            break;
+        case ROOM_WITH_SIDES_AND_BACK:
+            images[0] = allImages[5][0];
+            images[1] = allImages[5][1];
+            images[2] = allImages[5][2];
+            images[3] = allImages[5][3];
+            images[4] = allImages[5][4];
+            images[5] = allImages[5][5];
+            break;
+            
+        case ROOM_WITH_SIDES_AND_BACK_NO_RUG:
+            images[0] = allImages[6][0];
+            images[1] = allImages[6][1];
+            images[2] = allImages[6][2];
+            images[3] = allImages[6][3];
+            images[4] = allImages[6][4];
+            images[5] = allImages[6][5];
             break;
     }
     

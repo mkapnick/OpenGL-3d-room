@@ -8,6 +8,7 @@
 
 #include "JmuBackHallway.h"
 #include "RoomWithBackAndSides.h"
+#include "RoomWithFrontandSides.h"
 #include <math.h>
 
 JmuBackHallway::JmuBackHallway(vector<Cube>cubes)
@@ -61,6 +62,8 @@ void JmuBackHallway::setUpVisibleFaces()
             face = Faces::BOTTOM;
             properties->setFacesExcept(face);
             face = Faces::RIGHT;
+            properties->setFacesExcept(face);
+            face = Faces::LEFT;
             properties->setFacesExcept(face);
         }
         else if(i == (half+3))
@@ -140,7 +143,7 @@ void JmuBackHallway::drawClassroom1()
     GLfloat             startingAngles[3];
     vector<Cube>        cubes, cubes2;
     Faces               face;
-    RoomWithBackAndSides r;
+    RoomWithFrontAndSides r;
     
     startingAngles[0] = 0;
     startingAngles[1] = 0;
@@ -150,11 +153,11 @@ void JmuBackHallway::drawClassroom1()
     factory    = CubeFactory();
     
     properties.setCubeVertices(20, 10, 35);
-    properties.setImages(RIGHTH);
+    properties.setImages(ROOM_WITH_SIDES_AND_BACK);
     cubes = factory.createUniformCubes(50.2, classroom1Y, classroom1Z + 45, 10, startingAngles, properties, 0, 0, 10);
     /** Customize **/
     
-    r = RoomWithBackAndSides(cubes);
+    r = RoomWithFrontAndSides(cubes);
     cubes = r.getCubes();
     for(int i =0; i < cubes.size(); i++)
     {
@@ -164,7 +167,7 @@ void JmuBackHallway::drawClassroom1()
 
 void JmuBackHallway::drawClassroom2()
 {
-    Cube leadingHallway;
+    Cube                leadingHallway;
     CubeProperties      properties;
     CubeFactory         factory;
     GLfloat             startingAngles[3];
@@ -172,7 +175,6 @@ void JmuBackHallway::drawClassroom2()
     Faces               face;
     RoomWithBackAndSides r;
 
-    
     startingAngles[0] = 0;
     startingAngles[1] = 0;
     startingAngles[2] = 0;
@@ -181,6 +183,7 @@ void JmuBackHallway::drawClassroom2()
     factory    = CubeFactory();
     
     properties.setCubeVertices(40, 10, 35);
+    properties.setImages(ROOM_WITH_SIDES_AND_BACK_NO_RUG);
     cubes = factory.createUniformCubes(70, classroom1Y, classroom1Z - 45, 10, startingAngles, properties, 0, 0, -3);
     /** Customize **/
     
@@ -200,7 +203,7 @@ void JmuBackHallway::drawClassroom3()
     GLfloat             startingAngles[3];
     vector<Cube>        cubes, cubes2;
     Faces               face;
-    RoomWithBackAndSides r;
+    RoomWithFrontAndSides r;
 
     
     startingAngles[0] = 0;
@@ -211,11 +214,11 @@ void JmuBackHallway::drawClassroom3()
     factory    = CubeFactory();
     
     properties.setCubeVertices(19.5, 10, 35);
-    properties.setImages(RIGHTH);
+    properties.setImages(ROOM_WITH_SIDES_AND_BACK);
     cubes = factory.createUniformCubes(89.8, classroom1Y, classroom1Z + 45, 10, startingAngles, properties, 0, 0, 10);
     /** Customize **/
     
-    r = RoomWithBackAndSides(cubes);
+    r = RoomWithFrontAndSides(cubes);
     cubes = r.getCubes();
     for(int i =0; i < cubes.size(); i++)
     {
@@ -231,7 +234,7 @@ void JmuBackHallway::drawClassroom4()
     GLfloat             startingAngles[3];
     vector<Cube>        cubes, cubes2;
     Faces               face;
-    RoomWithBackAndSides r;
+    RoomWithFrontAndSides r;
 
     
     startingAngles[0] = 0;
@@ -242,11 +245,11 @@ void JmuBackHallway::drawClassroom4()
     factory    = CubeFactory();
     
     properties.setCubeVertices(20, 10, 35);
-    properties.setImages(RIGHTH);
+    properties.setImages(ROOM_WITH_SIDES_AND_BACK);
     cubes = factory.createUniformCubes(-50.2, classroom1Y, classroom1Z + 45, 10, startingAngles, properties, 0, 0, 10);
     /** Customize **/
     
-    r = RoomWithBackAndSides(cubes);
+    r = RoomWithFrontAndSides(cubes);
     cubes = r.getCubes();
     for(int i =0; i < cubes.size(); i++)
     {
@@ -273,7 +276,7 @@ void JmuBackHallway::drawClassroom5()
     factory    = CubeFactory();
     
     properties.setCubeVertices(40, 10, 35);
-    properties.setImages(LEFTH);
+    properties.setImages(ROOM_WITH_SIDES_AND_BACK_NO_RUG);
     cubes = factory.createUniformCubes(-70, classroom1Y, classroom1Z - 45, 10, startingAngles, properties, 0, 0, -3);
     /** Customize **/
     
@@ -293,7 +296,7 @@ void JmuBackHallway::drawClassroom6()
         GLfloat             startingAngles[3];
         vector<Cube>        cubes, cubes2;
         Faces               face;
-        RoomWithBackAndSides* r;
+        RoomWithFrontAndSides* r;
 
     
         startingAngles[0] = 0;
@@ -304,11 +307,11 @@ void JmuBackHallway::drawClassroom6()
         factory    = CubeFactory();
         
         properties.setCubeVertices(19.5, 10, 35);
-        properties.setImages(RIGHTH);
+        properties.setImages(ROOM_WITH_SIDES_AND_BACK);
         cubes = factory.createUniformCubes(-89.8, classroom1Y, classroom1Z + 45, 10, startingAngles, properties, 0, 0, 10);
         /** Customize **/
     
-    r = new RoomWithBackAndSides(cubes);
+    r = new RoomWithFrontAndSides(cubes);
     cubes = r->getCubes();
         for(int i =0; i < cubes.size(); i++)
         {
