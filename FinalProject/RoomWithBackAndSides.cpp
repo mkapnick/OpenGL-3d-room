@@ -20,6 +20,11 @@ RoomWithBackAndSides::RoomWithBackAndSides()
     //nothing
 }
 
+vector<Cube> RoomWithBackAndSides::getCubes()
+{
+    return this->cubes;
+}
+
 void RoomWithBackAndSides::setUpVisibleFaces()
 {
     Cube            cube;
@@ -53,7 +58,3 @@ void RoomWithBackAndSides::setUpVisibleFaces()
     }
 }
 
-vector<Cube> RoomWithBackAndSides::getCubes()
-{
-    return this->cubes;
-}

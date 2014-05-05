@@ -15,6 +15,16 @@ JmuLeftHallway::JmuLeftHallway(vector<Cube>cubes)
     setUpVisibleFaces();
 }
 
+void JmuLeftHallway::handleTick()
+{
+    Cube cube;
+    for(int i =0; i < this->cubes.size(); i++)
+    {
+        cube = cubes[i];
+        cube.handleTick();
+    }
+}
+
 void JmuLeftHallway::setUpVisibleFaces()
 {
     //beginning face must not have left face set
@@ -59,23 +69,7 @@ void JmuLeftHallway::setUpVisibleFaces()
             face = Faces::BACK;
             properties->setFacesExcept(face);
         }
-    }
-    //end face must not have left face set
-    
-    //middle 4 faces must not have left faces to set
-    
-    //last 4 faces must not have right set
-    
-}
-
-void JmuLeftHallway::handleTick()
-{
-    Cube cube;
-    for(int i =0; i < this->cubes.size(); i++)
-    {
-        cube = cubes[i];
-        cube.handleTick();
-    }
+    }    
 }
 
 void JmuLeftHallway::update(GLfloat deltaZ, bool positive)

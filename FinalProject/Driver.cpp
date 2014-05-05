@@ -13,12 +13,12 @@
 #include<stdio.h>
 
 /**
- * The driver for a simple animation
+ * The driver for modeling the JMU CS Department
  *
  * To avoid having to deal with the complexities of C++ method pointers,
  * this driver is written in C
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Prof. David Bernstein, Michael Kapnick
  * @version 1.0
  */
 
@@ -26,10 +26,6 @@ static int            selectedSprite = 0;
 static GLint          delay;
 static Stage          stage;
 int                   window;
-
-//static GLfloat verticesRightHallway[][3];
-
-
 
 
 /**
@@ -206,8 +202,7 @@ int main(int argc, char **argv)
      jmuMiddle  = new JmuMiddleHallway(cubes);
      hallways.push_back(jmuMiddle);
 
-     
-     middle      = BaseCube(0, 0, -15, 10.0);
+     middle      = BaseCube(0, 0, 55, 10.0);
      model       = Model(hallways, middle, startingAngles);
      stage.addSprite(&model);
      stage.start();

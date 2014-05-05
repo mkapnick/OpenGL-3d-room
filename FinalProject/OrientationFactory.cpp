@@ -66,19 +66,19 @@ static GLfloat rightWallMapping[][2] =
 
 OrientationFactory::OrientationFactory()
 {
-    
+    //nothing
 }
 
-void OrientationFactory::getFloorMapping(GLfloat**& floor)
+void OrientationFactory::getBackMapping(GLfloat**& wall)
 {
-    floor[0][0] = floorMapping[0][0];
-    floor[0][1] = floorMapping[0][1];
-    floor[1][0] = floorMapping[1][0];
-    floor[1][1] = floorMapping[1][1];
-    floor[2][0] = floorMapping[2][0];
-    floor[2][1] = floorMapping[2][1];
-    floor[3][0] = floorMapping[3][0];
-    floor[3][1] = floorMapping[3][1];
+    wall[0][0] = backMapping[0][0];
+    wall[0][1] = backMapping[0][1];
+    wall[1][0] = backMapping[1][0];
+    wall[1][1] = backMapping[1][1];
+    wall[2][0] = backMapping[2][0];
+    wall[2][1] = backMapping[2][1];
+    wall[3][0] = backMapping[3][0];
+    wall[3][1] = backMapping[3][1];
 }
 
 void OrientationFactory::getCeilingMapping(GLfloat**& ceiling)
@@ -93,29 +93,18 @@ void OrientationFactory::getCeilingMapping(GLfloat**& ceiling)
     ceiling[3][1] = ceilingMapping[3][1];
 }
 
-void OrientationFactory::getWallMapping(GLfloat**& wall)
+void OrientationFactory::getFloorMapping(GLfloat**& floor)
 {
-    wall[0][0] = wallMapping[0][0];
-    wall[0][1] = wallMapping[0][1];
-    wall[1][0] = wallMapping[1][0];
-    wall[1][1] = wallMapping[1][1];
-    wall[2][0] = wallMapping[2][0];
-    wall[2][1] = wallMapping[2][1];
-    wall[3][0] = wallMapping[3][0];
-    wall[3][1] = wallMapping[3][1];
+    floor[0][0] = floorMapping[0][0];
+    floor[0][1] = floorMapping[0][1];
+    floor[1][0] = floorMapping[1][0];
+    floor[1][1] = floorMapping[1][1];
+    floor[2][0] = floorMapping[2][0];
+    floor[2][1] = floorMapping[2][1];
+    floor[3][0] = floorMapping[3][0];
+    floor[3][1] = floorMapping[3][1];
 }
 
-void OrientationFactory::getBackMapping(GLfloat**& wall)
-{
-    wall[0][0] = backMapping[0][0];
-    wall[0][1] = backMapping[0][1];
-    wall[1][0] = backMapping[1][0];
-    wall[1][1] = backMapping[1][1];
-    wall[2][0] = backMapping[2][0];
-    wall[2][1] = backMapping[2][1];
-    wall[3][0] = backMapping[3][0];
-    wall[3][1] = backMapping[3][1];
-}
 
 void OrientationFactory::getFrontMapping(GLfloat**& wall)
 {
@@ -152,3 +141,21 @@ void OrientationFactory::getRightWallMapping(GLfloat**& wall)
     wall[3][0] = rightWallMapping[3][0];
     wall[3][1] = rightWallMapping[3][1];
 }
+
+void OrientationFactory::getWallMapping(GLfloat**& wall)
+{
+    wall[0][0] = wallMapping[0][0];
+    wall[0][1] = wallMapping[0][1];
+    wall[1][0] = wallMapping[1][0];
+    wall[1][1] = wallMapping[1][1];
+    wall[2][0] = wallMapping[2][0];
+    wall[2][1] = wallMapping[2][1];
+    wall[3][0] = wallMapping[3][0];
+    wall[3][1] = wallMapping[3][1];
+}
+
+
+
+
+
+

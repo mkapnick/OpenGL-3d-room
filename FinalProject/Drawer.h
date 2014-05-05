@@ -6,9 +6,10 @@
 #include "CubeProperties.h"
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
+ * Responsible drawing an individual face into the world. Also
+ * responsible for binding each face to its correct mapping
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Michael Kapnick
  * @version 1.0
  */
 class Drawer

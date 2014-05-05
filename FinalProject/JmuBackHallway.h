@@ -9,9 +9,9 @@ using namespace std;
 
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
+ * The Back Hallway in the JMU CS Department
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Michael Kapnick
  * @version 1.0
  */
 class JmuBackHallway: public Hallway
@@ -26,12 +26,12 @@ public:
     
 private:
     void setUpVisibleFaces();
-    void drawClassroom1();
-    void drawClassroom2();
-    void drawClassroom3();
-    void drawClassroom4();
-    void drawClassroom5();
-    void drawClassroom6();
+    void drawLinuxLab();
+    void drawEducationRoom();
+    void drawMacLab();
+    void draw488Classroom();
+    void drawEngineeringLab();
+    void drawOtherClassroom();
     GLfloat classroom1X, classroom1Y, classroom1Z, classroom2X, classroom2Y, classroom2Z;
 };
 #endif

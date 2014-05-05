@@ -3,7 +3,6 @@
 
 #include "Sprite.h"
 #include "CubeProperties.h"
-#include "Orientation.h"
 
 
 /**

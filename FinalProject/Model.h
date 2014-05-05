@@ -10,9 +10,10 @@ using namespace std;
 
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
+ * A Model is made up of a bunch of hallway objects that know
+ * where and how to draw/move themselves
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Michael Kapnick
  * @version 1.0
  */
 

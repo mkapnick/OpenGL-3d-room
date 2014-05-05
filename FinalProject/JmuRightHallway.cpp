@@ -15,6 +15,16 @@ JmuRightHallway::JmuRightHallway(vector<Cube>cubes)
     setUpVisibleFaces();
 }
 
+void JmuRightHallway::handleTick()
+{
+    Cube cube;
+    for(int i =0; i < this->cubes.size(); i++)
+    {
+        cube = cubes[i];
+        cube.handleTick();
+    }
+}
+
 void JmuRightHallway::setUpVisibleFaces()
 {
     //beginning face must not have left face set
@@ -50,6 +60,14 @@ void JmuRightHallway::setUpVisibleFaces()
             properties->setFacesExcept(face);
 
         }
+        else if (i == 2)
+        {
+            face = Faces::FRONT;
+            properties->setFacesExcept(face);
+            face = Faces::BACK;
+            properties->setFacesExcept(face);
+            properties->changeImage(LEFTWALL,"/raws/IMG_0512.raw");
+        }
         else if(i == size -1)
         {
             properties->changeImage(LEFTWALL,"/raws/grove_door_end.raw");
@@ -66,22 +84,6 @@ void JmuRightHallway::setUpVisibleFaces()
             face = Faces::BACK;
             properties->setFacesExcept(face);
         }
-    }
-    //end face must not have left face set
-    
-    //middle 4 faces must not have left faces to set
-    
-    //last 4 faces must not have right set
-    
-}
-
-void JmuRightHallway::handleTick()
-{
-    Cube cube;
-    for(int i =0; i < this->cubes.size(); i++)
-    {
-        cube = cubes[i];
-        cube.handleTick();
     }
 }
 

@@ -14,25 +14,11 @@ Model::Model(vector<Hallway*> list, BaseCube base, GLfloat* angles)
 {
     hallways        = list;
     this->base      = base;
-    
-    //Keep track of original values.. worry about this later
-    
-    /*originalZValues = new GLfloat[list.size()];
-    originalYValues = new GLfloat[list.size()];
-    originalXValues = new GLfloat[list.size()];
-    
-    Cube tmp;
-    for(int i =0; i < list.size() + 1; i++)
-    {
-        tmp = list[i];
-        originalZValues[i] = *tmp.getOffsetZ();
-        originalYValues[i] = *tmp.getOffsetY();
-        originalXValues[i] = *tmp.getOffsetX();
-    }*/
+
 }
 Model::Model()
 {
-    
+    //nothing
 }
 
 /**
@@ -55,33 +41,6 @@ void Model::handleTick()
         hallways[i]->handleTick();
     }
 }
-
-void Model::mouseClicked(int button, int state, int x, int y)
-{
-    GLfloat*    localOffsetX, *angle;
-    GLfloat     deltaX;
-    
-    localOffsetX    = base.getOffsetX();
-    angle           = base.getAngleArray();
-    
-    deltaX      = sin(deg2rad(angle[1]));
-    
-    if(deltaX == 0)
-        deltaX = 2;
-    
-    if (state == GLUT_DOWN)
-    {
-        if(button == GLUT_LEFT_BUTTON)
-        {
-            *localOffsetX +=deltaX;
-        }
-        else if(button == GLUT_RIGHT_BUTTON)
-        {
-            *localOffsetX -=deltaX;
-        }
-    }
-}
-
 void Model::keyPressed(unsigned char key, int x, int y)
 {
     GLfloat deltaX, deltaZ;
@@ -150,6 +109,32 @@ void Model::keyPressed(unsigned char key, int x, int y)
     for(int i =0; i < hallways.size(); i++)
     {
         hallways[i]->update(deltaZ, positive);
+    }
+}
+
+void Model::mouseClicked(int button, int state, int x, int y)
+{
+    GLfloat*    localOffsetX, *angle;
+    GLfloat     deltaX;
+    
+    localOffsetX    = base.getOffsetX();
+    angle           = base.getAngleArray();
+    
+    deltaX      = sin(deg2rad(angle[1]));
+    
+    if(deltaX == 0)
+        deltaX = 2;
+    
+    if (state == GLUT_DOWN)
+    {
+        if(button == GLUT_LEFT_BUTTON)
+        {
+            *localOffsetX +=deltaX;
+        }
+        else if(button == GLUT_RIGHT_BUTTON)
+        {
+            *localOffsetX -=deltaX;
+        }
     }
 }
 

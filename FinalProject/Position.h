@@ -5,9 +5,10 @@
 
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
+ * Possible Positions with in the model. LEFTH (Left Hallway).
+ * Other positions include rooms with in the model
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Michael Kapnick
  * @version 1.0
  */
 enum Position

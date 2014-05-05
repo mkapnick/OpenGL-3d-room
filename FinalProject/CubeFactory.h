@@ -7,9 +7,9 @@
 
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
+ * A Factory for generating Cubes given the correct parameters
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Michael Kapnick
  * @version 1.0
  */
 class CubeFactory

@@ -9,6 +9,13 @@
 #ifndef FP_Location_h
 #define FP_Location_h
 
+/**
+ * The Location with in an individual cube
+ *
+ * @author  Michael Kapnick
+ * @version 1.0
+ */
+
 enum Location
 {
     FLOOR,

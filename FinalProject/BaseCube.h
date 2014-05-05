@@ -5,9 +5,9 @@
 
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
+ * A BaseCube is the main point in the world
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Michael Kapnick
  * @version 1.0
  */
 class BaseCube: public Cube

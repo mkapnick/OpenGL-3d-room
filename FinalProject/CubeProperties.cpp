@@ -38,6 +38,41 @@ CubeProperties::CubeProperties(CubeProperties& properties)
     copyImages(properties.images);
 }
 
+void CubeProperties::changeImage(Location location, char * image)
+{
+    int index;
+    switch(location)
+    {
+        case CEILING:
+            index =5;
+            break;
+        case FLOOR:
+            index = 2;
+            break;
+        case FRONTWALL:
+            index = 0;
+            break;
+        case BACKWALL:
+            index = 4;
+            break;
+        case LEFTWALL:
+            index = 1;
+            break;
+        case RIGHTWALL:
+            index = 3;
+            break;
+        default:
+            break;
+    }
+    
+    if(index >= 0 && index < 6)
+    {
+        images[index] = image;
+    }
+    
+    updateTextureMap();
+}
+
 void CubeProperties::copyFaces(GLint faces[6][4])
 {
     for(int i =0; i < 6; i++)
@@ -47,6 +82,16 @@ void CubeProperties::copyFaces(GLint faces[6][4])
             this->faces[i][j] = faces[i][j];
         }
     }
+}
+
+void CubeProperties::copyImages(char * images[6])
+{
+    for(int i=0; i < 6; i++)
+    {
+        this->images[i] = images[i];
+    }
+    
+    updateTextureMap();
 }
 
 void CubeProperties::copyVertices(GLfloat vertices[8][3])
@@ -60,14 +105,62 @@ void CubeProperties::copyVertices(GLfloat vertices[8][3])
     }
 }
 
-void CubeProperties::copyImages(char * images[6])
+void CubeProperties::initializeFaces()
 {
-    for(int i=0; i < 6; i++)
+    for(int i =0; i < 6; i++)
     {
-        this->images[i] = images[i];
+        switch(i)
+        {
+            case 0:
+                faces[0][0] = 4;
+                faces[0][1] = 5;
+                faces[0][2] = 6;
+                faces[0][3] = 7;
+                break;
+            case 1:
+                faces[1][0] = 1;
+                faces[1][1] = 2;
+                faces[1][2] = 6;
+                faces[1][3] = 5;
+                break;
+            case 2:
+                faces[2][0] = 0;
+                faces[2][1] = 1;
+                faces[2][2] = 5;
+                faces[2][3] = 4;
+                break;
+            case 3:
+                faces[3][0] = 0;
+                faces[3][1] = 3;
+                faces[3][2] = 2;
+                faces[3][3] = 1;
+                break;
+            case 4:
+                faces[4][0] = 0;
+                faces[4][1] = 4;
+                faces[4][2] = 7;
+                faces[4][3] = 3;
+                break;
+            case 5:
+                faces[5][0] = 2;
+                faces[5][1] = 3;
+                faces[5][2] = 7;
+                faces[5][3] = 6;
+                break;
+        }
     }
+}
+
+void CubeProperties::readRAWImage(char* filename, GLbyte data[256][256][3])
+{
+    FILE * file;
     
-    updateTextureMap();
+    file = fopen( filename, "rb" );
+    if (file != NULL)
+    {
+        fread(data, 256 * 256 * 3, 1, file);
+        fclose(file);
+    }
 }
 
 void CubeProperties::setCubeImages(Position position)
@@ -98,54 +191,6 @@ void CubeProperties::setCubeImages(Position position)
     }
 }
 
-void CubeProperties::readRAWImage(char* filename, GLbyte data[256][256][3])
-{
-    FILE * file;
-    
-    file = fopen( filename, "rb" );
-    if (file != NULL)
-    {
-        fread(data, 256 * 256 * 3, 1, file);
-        fclose(file);
-    }
-}
-
-void CubeProperties::updateTextureMap()
-{
-    //Read the "image"
-    GLbyte image[6][256][256][3];
-    
-    //read in each raw image for the cube
-    for(int i =0; i < 6; i++)
-    {
-        readRAWImage(images[i], image[i]);
-    }
-    
-    //[name
-    // Get a name for the texture
-    glGenTextures(6, textureNames);
-    //]name
-    
-    for (int i=0; i<6; i++)
-    {
-        // Select the texture object
-        glBindTexture(GL_TEXTURE_2D, textureNames[i]);
-        
-        // Set the parameters
-        glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
-        glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
-        glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-        glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-        
-        // Create the texture object
-        glTexImage2D(GL_TEXTURE_2D,0,3,256,256,0,GL_RGB,GL_UNSIGNED_BYTE,
-                     image[i]);
-    }
-    
-    // Enable textures
-    glEnable(GL_TEXTURE_2D);
-
-}
 void CubeProperties::setCubeVertices(GLfloat x, GLfloat y, GLfloat z)
 {
     setVertices(x, y, z);
@@ -204,144 +249,6 @@ void CubeProperties::setFacesExcept(Faces f)
     }
 }
 
-void CubeProperties::updateFaces(int row)
-{
-    for(int i =0; i < 4; i++)
-    {
-        this->faces[row][i] = -1;
-    }
-}
-
-void CubeProperties::initializeFaces()
-{
-    for(int i =0; i < 6; i++)
-    {
-        switch(i)
-        {
-            case 0:
-                faces[0][0] = 4;
-                faces[0][1] = 5;
-                faces[0][2] = 6;
-                faces[0][3] = 7;
-                break;
-            case 1:
-                faces[1][0] = 1;
-                faces[1][1] = 2;
-                faces[1][2] = 6;
-                faces[1][3] = 5;
-                break;
-            case 2:
-                faces[2][0] = 0;
-                faces[2][1] = 1;
-                faces[2][2] = 5;
-                faces[2][3] = 4;
-                break;
-            case 3:
-                faces[3][0] = 0;
-                faces[3][1] = 3;
-                faces[3][2] = 2;
-                faces[3][3] = 1;
-                break;
-            case 4:
-                faces[4][0] = 0;
-                faces[4][1] = 4;
-                faces[4][2] = 7;
-                faces[4][3] = 3;
-                break;
-            case 5:
-                faces[5][0] = 2;
-                faces[5][1] = 3;
-                faces[5][2] = 7;
-                faces[5][3] = 6;
-                break;
-        }
-    }
-}
-
-void CubeProperties::setVertices(GLfloat x, GLfloat y, GLfloat z)
-{
-    for (int i =0; i < 8; i++)
-    {
-        switch(i)
-        {
-            case 0:
-                vertices[0][0] = -x;
-                vertices[0][1] = -y;
-                vertices[0][2] = -z;
-                break;
-            case 1:
-                vertices[1][0] = x;
-                vertices[1][1] = -y;
-                vertices[1][2] = -z;
-                break;
-            case 2:
-                vertices[2][0] = x;
-                vertices[2][1] = y;
-                vertices[2][2] = -z;
-                break;
-            case 3:
-                vertices[3][0] = -x;
-                vertices[3][1] = y;
-                vertices[3][2] = -z;
-                break;
-            case 4:
-                vertices[4][0] = -x;
-                vertices[4][1] = -y;
-                vertices[4][2] = z;
-                break;
-            case 5:
-                vertices[5][0] = x;
-                vertices[5][1] = -y;
-                vertices[5][2] = z;
-                break;
-            case 6:
-                vertices[6][0] = x;
-                vertices[6][1] = y;
-                vertices[6][2] = z;
-                break;
-            case 7:
-                vertices[7][0] = -x;
-                vertices[7][1] = y;
-                vertices[7][2] = z;
-                break;
-        }
-    }
-}
-
-void CubeProperties::changeImage(Location location, char * image)
-{
-    int index;
-    switch(location)
-    {
-        case CEILING:
-            index =5;
-            break;
-        case FLOOR:
-            index = 2;
-            break;
-        case FRONTWALL:
-            index = 0;
-            break;
-        case BACKWALL:
-            index = 4;
-            break;
-        case LEFTWALL:
-            index = 1;
-            break;
-        case RIGHTWALL:
-            index = 3;
-            break;
-        default:
-            break;
-    }
-    
-    if(index >= 0 && index < 6)
-    {
-        images[index] = image;
-    }
-    
-    updateTextureMap();
-}
 
 void CubeProperties::setImages(Position pos)
 {
@@ -407,4 +314,98 @@ void CubeProperties::setImages(Position pos)
     }
     
     updateTextureMap();
+}
+
+void CubeProperties::setVertices(GLfloat x, GLfloat y, GLfloat z)
+{
+    for (int i =0; i < 8; i++)
+    {
+        switch(i)
+        {
+            case 0:
+                vertices[0][0] = -x;
+                vertices[0][1] = -y;
+                vertices[0][2] = -z;
+                break;
+            case 1:
+                vertices[1][0] = x;
+                vertices[1][1] = -y;
+                vertices[1][2] = -z;
+                break;
+            case 2:
+                vertices[2][0] = x;
+                vertices[2][1] = y;
+                vertices[2][2] = -z;
+                break;
+            case 3:
+                vertices[3][0] = -x;
+                vertices[3][1] = y;
+                vertices[3][2] = -z;
+                break;
+            case 4:
+                vertices[4][0] = -x;
+                vertices[4][1] = -y;
+                vertices[4][2] = z;
+                break;
+            case 5:
+                vertices[5][0] = x;
+                vertices[5][1] = -y;
+                vertices[5][2] = z;
+                break;
+            case 6:
+                vertices[6][0] = x;
+                vertices[6][1] = y;
+                vertices[6][2] = z;
+                break;
+            case 7:
+                vertices[7][0] = -x;
+                vertices[7][1] = y;
+                vertices[7][2] = z;
+                break;
+        }
+    }
+}
+void CubeProperties::updateFaces(int row)
+{
+    for(int i =0; i < 4; i++)
+    {
+        this->faces[row][i] = -1;
+    }
+}
+
+void CubeProperties::updateTextureMap()
+{
+    //Read the "image"
+    GLbyte image[6][256][256][3];
+    
+    //read in each raw image for the cube
+    for(int i =0; i < 6; i++)
+    {
+        readRAWImage(images[i], image[i]);
+    }
+    
+    //[name
+    // Get a name for the texture
+    glGenTextures(6, textureNames);
+    //]name
+    
+    for (int i=0; i<6; i++)
+    {
+        // Select the texture object
+        glBindTexture(GL_TEXTURE_2D, textureNames[i]);
+        
+        // Set the parameters
+        glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+        glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
+        glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+        glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+        
+        // Create the texture object
+        glTexImage2D(GL_TEXTURE_2D,0,3,256,256,0,GL_RGB,GL_UNSIGNED_BYTE,
+                     image[i]);
+    }
+    
+    // Enable textures
+    glEnable(GL_TEXTURE_2D);
+
 }

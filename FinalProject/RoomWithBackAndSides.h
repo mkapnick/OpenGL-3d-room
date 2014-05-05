@@ -8,9 +8,9 @@
 
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
+ * A room that only has its sides and back visible (drawn) in the world
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Michael Kapnick
  * @version 1.0
  */
 class RoomWithBackAndSides

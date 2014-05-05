@@ -8,9 +8,9 @@ using namespace std;
 
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
+ * The Middle Hallway in the JMU CS Department
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Michael Kapnick
  * @version 1.0
  */
 class JmuMiddleHallway: public Hallway

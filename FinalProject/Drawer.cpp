@@ -53,16 +53,6 @@ void Drawer::bindFace(int face)
     
 }
 
-void Drawer::initializeMapping(GLfloat**& mapping)
-{
-    mapping = new GLfloat * [4];
-    
-    for(int i =0; i < 4; i++)
-    {
-        mapping[i] = new GLfloat[2];
-    }
-}
-
 void Drawer::draw(int face)
 {
     bindFace(face);
@@ -90,3 +80,15 @@ void Drawer::draw(int face)
         glEnd();
     }
 }
+
+void Drawer::initializeMapping(GLfloat**& mapping)
+{
+    mapping = new GLfloat * [4];
+    
+    for(int i =0; i < 4; i++)
+    {
+        mapping[i] = new GLfloat[2];
+    }
+}
+
+

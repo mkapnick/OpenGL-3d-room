@@ -1,5 +1,5 @@
 //
-//  MainHallway.cpp
+//  Cube.cpp
 //  FinalProject
 //
 //  Created by Michael Kapnick on 4/16/14.
@@ -49,6 +49,14 @@ GLfloat* Cube::getAngleArray()
 /**
  *
  */
+CubeProperties* Cube::getCubeProperties()
+{
+    return this->properties;
+}
+
+/**
+ *
+ */
 GLfloat* Cube::getOffsetX()
 {
     return &offsetX;
@@ -87,7 +95,6 @@ void Cube::handleTick()
     glRotated(angle[2], 0, 0, 1);
 
 
-    
     //draw cube here with texture mapping
     for (int f=0; f<6; f++)
     {
@@ -112,10 +119,6 @@ void Cube::keyPressed(unsigned char key, int x, int y)
 {
 }
 
-CubeProperties* Cube::getCubeProperties()
-{
-    return this->properties;
-}
 
 
 

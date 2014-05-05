@@ -97,7 +97,6 @@
 		A4FDCFBD1915A17C00FEEF4E /* CubeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeFactory.h; sourceTree = "<group>"; };
 		A4FDCFBF1915B4BC00FEEF4E /* Drawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawer.cpp; sourceTree = "<group>"; };
 		A4FDCFC01915B4BC00FEEF4E /* Drawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawer.h; sourceTree = "<group>"; };
-		A4FDCFC21916973500FEEF4E /* Orientation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Orientation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +202,6 @@
 				A4FDCFBD1915A17C00FEEF4E /* CubeFactory.h */,
 				A4FDCFBF1915B4BC00FEEF4E /* Drawer.cpp */,
 				A4FDCFC01915B4BC00FEEF4E /* Drawer.h */,
-				A4FDCFC21916973500FEEF4E /* Orientation.h */,
 				A4E7FBA01916C85700D05066 /* Location.h */,
 				A4E7FBA41917352E00D05066 /* RoomWithBackAndSides.cpp */,
 				A4E7FBA51917352E00D05066 /* RoomWithBackAndSides.h */,

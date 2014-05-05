@@ -4,9 +4,10 @@
 #include "Sprite.h"
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
+ * Maintains the orientations needed when texture mapping textures
+ * to walla
  *
- * @author  Prof. David Bernstein, James Madison University
+ * @author  Michael Kapnick
  * @version 1.0
  */
 class OrientationFactory

@@ -11,9 +11,8 @@ using namespace std;
 
 
 /**
- * A Cube is a cube-shaped Sprite that rotates
- *
- * @author  Prof. David Bernstein, James Madison University
+ * Encapsulates all the necessary properties needed for a cube
+ * @author  Michael Kapnick
  * @version 1.0
  */
 class CubeProperties

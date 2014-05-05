@@ -1,9 +1,11 @@
 //
-//  MainHallway.cpp
+//  BaseCube.cpp
 //  FinalProject
 //
 //  Created by Michael Kapnick on 4/16/14.
 //  Copyright (c) 2014 Michael Kapnick. All rights reserved.
+//
+//  Where every object in the world rotates around
 //
 
 #include "BaseCube.h"
@@ -37,6 +39,29 @@ void BaseCube::handleTick()
     glTranslated(-offsetX, -offsetY, offsetZ*-2);
 }
 
+GLfloat* BaseCube::getAngleArray()
+{
+    return angle;
+}
+
+GLfloat* BaseCube::getOffsetX()
+{
+    return &offsetX;
+}
+GLfloat* BaseCube::getOffsetY()
+{
+    return &offsetY;
+}
+GLfloat* BaseCube::getOffsetZ()
+{
+    return &offsetZ;
+}
+void BaseCube::setAngleArray(GLfloat * ang)
+{
+    angle[0] = ang[0];
+    angle[1] = ang[1];
+    angle[2] = ang[2];
+}
 void BaseCube::setOffsetX(GLfloat x)
 {
     offsetX = x;
@@ -52,28 +77,7 @@ void BaseCube::setOffsetZ(GLfloat z, bool isPositive)
     offsetZ = z;
 }
 
-GLfloat* BaseCube::getOffsetX()
-{
-    return &offsetX;
-}
-GLfloat* BaseCube::getOffsetY()
-{
-    return &offsetY;
-}
-GLfloat* BaseCube::getOffsetZ()
-{
-    return &offsetZ;
-}
 
-GLfloat* BaseCube::getAngleArray()
-{
-    return angle;
-}
-void BaseCube::setAngleArray(GLfloat * ang)
-{
-    angle[0] = ang[0];
-    angle[1] = ang[1];
-    angle[2] = ang[2];
-}
+
 
 
