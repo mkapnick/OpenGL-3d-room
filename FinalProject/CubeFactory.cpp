@@ -4,6 +4,7 @@
 CubeFactory::CubeFactory()
 {
     // nothing
+    //Test: Cube cube;
 }
 
 vector<Cube> CubeFactory::createUniformCubes(GLfloat x,GLfloat y , GLfloat z, int numberOfCubes, GLfloat startingAngles[3], CubeProperties properties, int stepX, int stepY, int stepZ)
